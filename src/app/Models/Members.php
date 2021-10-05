@@ -15,13 +15,17 @@ class Members extends Model
     protected string $password;
     protected int $role_id;
 
-    public function teams() : array
+    public function role(): Roles|null
+    {
+        return Roles::find($this->role_id);
+    }
+
+    public function teams(): array
     {
         $teams_members = Team_Member::where('member_id', $this->id)->get();
         $teams = [];
 
-        foreach ($teams_members as $team_member)
-        {
+        foreach ($teams_members as $team_member) {
             $teams[] = Teams::find($team_member->team_id);
         }
 
