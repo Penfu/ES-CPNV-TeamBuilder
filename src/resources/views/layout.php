@@ -10,16 +10,9 @@
 </head>
 
 <body>
-    <header id="navbar">
-        <a class="btn" href="./">Accueil</a>
-        <a class="btn" href="?view=mes-equipes">Mes équipes</a>
-        <a class="btn" href="?view=membres">Liste des membres</a>
-        <a class="btn" href="?view=moderateurs">Modérateurs</a>
+    <header>
+        <?php include(COMPONENT_ROOT . '/navbar.php') ?>
     </header>
-    <div id="hero">
-        <h1>Teambuilder</h1>
-        <p>Connecté en tant que: <?= $_SESSION['userLog']->name ?></p>
-    </div>
     <?= $content ?>
 </body>
 

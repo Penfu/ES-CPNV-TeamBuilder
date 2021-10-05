@@ -13,11 +13,7 @@ use App\Controllers\ModeratorsController;
 
 $_SESSION['userLog'] = Members::find(USER_ID); // Armand
 
-if (!isset($_GET['view'])) {
-    $view = 'home';
-} else {
-    $view = $_GET['view'];
-}
+$GLOBALS['view'] = isset($_GET['view']) ? $_GET['view'] : 'home';
 
 switch ($view) {
     case 'home': {
