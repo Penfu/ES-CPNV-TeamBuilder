@@ -18,10 +18,6 @@ table th {
   border-radius: 4px;
 }
 
-table th:nth-child(1) {
-  width: 100px;
-}
-
 table tr:nth-child(even) {
   background-color: #d4d4d4;
 }
@@ -29,8 +25,4 @@ table tr:nth-child(even) {
 td a {
   display: block;
   width: 100%;
-}
-
-td:hover {
-  background-color: #63ace5;
 }

@@ -11,6 +11,8 @@ class Read extends Query
     private array $columns;
     private ?array $conditions;
     private string $query;
+    private array $orderBy;
+    private string $orderSens;
     private bool $returnAsDirectObject = false;
 
     /**
@@ -33,6 +35,22 @@ class Read extends Query
     {
         $this->conditions[] = $column;
         $this->params[$column] = $value;
+
+        return $this;
+    }
+
+    public function orderAscBy(string $column): self
+    {
+        $this->orderSens = 'ASC';
+        $this->orderBy[] = $column;
+
+        return $this;
+    }
+
+    public function orderDescBy(string $column): self
+    {
+        $this->orderSens = 'DESC';
+        $this->orderBy[] = $column;
 
         return $this;
     }
@@ -65,6 +83,10 @@ class Read extends Query
             foreach ($this->conditions as $condition) {
                 $query .= ($condition !== reset($this->conditions) ? ' AND ' : null) . $condition . ' = :' . $condition;
             }
+        }
+
+        if (isset($this->orderBy)) {
+            $query .= ' ORDER BY ' . implode(', ', $this->orderBy) . ' ' . $this->orderSens;
         }
 
         $this->query = $query;

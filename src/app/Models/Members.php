@@ -29,6 +29,10 @@ class Members extends Model
             $teams[] = Teams::find($team_member->team_id);
         }
 
+        usort($teams, function ($a, $b) {
+            return strcmp($a->name, $b->name);
+        });
+
         return $teams;
     }
 }
