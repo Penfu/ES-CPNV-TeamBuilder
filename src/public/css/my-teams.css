@@ -1,0 +1,36 @@
+#teams-info-section {
+  margin-top: 20px;
+}
+
+#teams-list-section {
+  margin-top: 25px;
+}
+
+table {
+  margin-top: 20px;
+  width: 100%;
+  text-align: left;
+}
+
+table td,
+table th {
+  padding: 8px;
+  border-radius: 4px;
+}
+
+table th:nth-child(1) {
+  width: 100px;
+}
+
+table tr:nth-child(even) {
+  background-color: #d4d4d4;
+}
+
+td a {
+  display: block;
+  width: 100%;
+}
+
+td:hover {
+  background-color: #63ace5;
+}
