@@ -12,7 +12,7 @@ class Read extends Query
     private ?array $conditions;
     private string $query;
     private array $orderBy;
-    private string $orderSens;
+    private string $orderDirection;
     private bool $returnAsDirectObject = false;
 
     /**
@@ -39,19 +39,11 @@ class Read extends Query
         return $this;
     }
 
-    public function orderAscBy(string $column): self
+    public function orderBy(string $column, ?string $direction = 'asc'): self
     {
-        $this->orderSens = 'ASC';
         $this->orderBy[] = $column;
-
-        return $this;
-    }
-
-    public function orderDescBy(string $column): self
-    {
-        $this->orderSens = 'DESC';
-        $this->orderBy[] = $column;
-
+        $this->orderDirection = $direction;
+        
         return $this;
     }
 
@@ -78,7 +70,7 @@ class Read extends Query
         }
 
         if (isset($this->orderBy)) {
-            $this->query .= ' ORDER BY ' . implode(', ', $this->orderBy) . ' ' . $this->orderSens;
+            $this->query .= ' ORDER BY ' . implode(', ', $this->orderBy) . ' ' . $this->orderDirection;
         }
 
         return $this->execute();
