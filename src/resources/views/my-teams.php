@@ -1,36 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <title>Teambuilder - Mes équipes</title>
+    <link rel="stylesheet" href="/css/my-teams.css">
 </head>
 
-<body>
+<div class="container" id="teams-info-section">
+    <h2>Mes équipes</h2>
+</div>
+<div class="container" id="teams-list-section">
+    <table>
+        <tr>
+            <th>Equipe</th>
+            <th>Capitaine</th>
+            <th>Nombre de membres</th>
+        </tr>
 
-    <head>
-        <link rel="stylesheet" href="/css/my-teams.css">
-    </head>
-
-    <div class="container" id="teams-info-section">
-        <h2>Mes équipes</h2>
-    </div>
-    <div class="container" id="teams-list-section">
-        <table>
+        <?php foreach ($teams as $team) : ?>
             <tr>
-                <th>Equipe</th>
-                <th>Capitaine</th>
-                <th>Nombre de membres</th>
+                <td><a href="?view=equipe&equipe=<?= $team->id ?>"><?= $team->name ?></a></td>
+                <td><?= $team->captain()->name ?></td>
+                <td><?= count($team->members()) ?></td>
             </tr>
-
-            <?php foreach ($teams as $team) : ?>
-                <tr>
-                    <td><a href="?view=equipe&equipe=<?= $team->id ?>"><?= $team->name ?></a></td>
-                    <td><?= $team->captain()->name ?></td>
-                    <td><?= count($team->members()) ?></td>
-                </tr>
-            <?php endforeach ?>
-        </table>
-    </div>
-</body>
-
-</html>
+        <?php endforeach ?>
+    </table>
+</div>

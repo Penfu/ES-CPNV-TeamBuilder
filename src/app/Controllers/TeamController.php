@@ -10,14 +10,13 @@ class TeamController
     {
         $idTeam = 0;
 
-        if(isset($_GET['equipe']))
-        {
+        if (isset($_GET['equipe'])) {
             $idTeam = (int)$_GET['equipe'];
         }
 
         $team = Teams::find($idTeam);
 
-        if(is_null($team)) {
+        if (is_null($team)) {
             header('Location: ./');
             exit();
         }
