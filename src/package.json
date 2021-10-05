@@ -1,5 +1,10 @@
 {
-  "dependencies": {
-    "normalize.css": "^8.0.1"
+  "scripts": {
+    "build": "tailwindcss build -i ./resources/sass/app.scss -o ./public/css/app.css"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3.7",
+    "postcss": "^8.3.9",
+    "tailwindcss": "^2.2.16"
   }
 }
