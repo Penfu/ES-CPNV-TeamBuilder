@@ -22,13 +22,12 @@ class Create extends Query
      */
     private function build()
     {
-        $query = 'INSERT INTO ' . $this->table . ' VALUES (null,';
-        foreach ($this->params as $key => $_) {
-            $query .= ':' . $key . ($key !== array_key_last($this->params) ? ',' : null);
-        }
-        $query .= ');';
+        $this->query = 'INSERT INTO ' . $this->table . ' VALUES (null,';
 
-        $this->query = $query;
+        foreach ($this->params as $key => $_) {
+            $this->query .= ':' . $key . ($key !== array_key_last($this->params) ? ',' : null);
+        }
+        $this->query .= ');';
     }
 
     /**

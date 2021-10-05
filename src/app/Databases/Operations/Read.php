@@ -70,26 +70,17 @@ class Read extends Query
      */
     public function get(): array | Model | null
     {
-        $query = 'SELECT ';
-
-        foreach ($this->columns as $column) {
-            $query .= $column . ($column !== end($this->columns) ? ', ' : null);
-        }
-
-        $query .= ' FROM ' . $this->table;
+        $this->query = 'SELECT ' . implode(', ', $this->columns) . ' FROM ' . $this->table;
 
         if (isset($this->conditions) && !empty($this->conditions)) {
-            $query .= ' WHERE ';
-            foreach ($this->conditions as $condition) {
-                $query .= ($condition !== reset($this->conditions) ? ' AND ' : null) . $condition . ' = :' . $condition;
-            }
+            for ($i = 0; $i < count($this->conditions); $i++) $this->conditions[$i] .= ' = :' . $this->conditions[$i];
+            $this->query .= ' WHERE ' . implode(' AND ', $this->conditions);
         }
 
         if (isset($this->orderBy)) {
-            $query .= ' ORDER BY ' . implode(', ', $this->orderBy) . ' ' . $this->orderSens;
+            $this->query .= ' ORDER BY ' . implode(', ', $this->orderBy) . ' ' . $this->orderSens;
         }
 
-        $this->query = $query;
         return $this->execute();
     }
 
