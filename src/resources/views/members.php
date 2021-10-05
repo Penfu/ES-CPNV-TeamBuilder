@@ -2,10 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Teambuilder</title>
+    <title>Teambuilder - Membres</title>
 </head>
 
 <body>
@@ -13,14 +10,6 @@
     <head>
         <link rel="stylesheet" href="/css/members.css">
     </head>
-
-    <header>
-    </header>
-
-    <div id="hero">
-        <h1>Teambuilder</h1>
-        <p>Connecté en tant que: <?= $_SESSION['userLog']->name ?></p>
-    </div>
 
     <div class="container" id="members-list-section">
         <h2>Liste des membres</h2>
@@ -33,11 +22,7 @@
             <?php foreach ($members as $member) : ?>
                 <tr>
                     <td><?= $member->name ?></td>
-                    <td>
-                        <?php foreach ($member->teams() as $team) : ?>
-                            <?= $team->name .  ' ,' ?>
-                        <?php endforeach ?>
-                    </td>
+                    <td><?= implode(', ', $this->pluck($member->teams(), 'name')) ?></td>
                 </tr>
             <?php endforeach ?>
         </table>

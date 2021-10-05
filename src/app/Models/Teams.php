@@ -13,4 +13,22 @@ class Teams extends Model
     protected int $id;
     protected string $name;
     protected int $state_id;
+
+    public function members(): array
+    {
+        $teams_members = Team_Member::where('team_id', $this->id)->get();
+        $members = [];
+
+        foreach ($teams_members as $team_member) {
+            $members[] = Members::find($team_member->member_id);
+        }
+
+        return $members;
+    }
+
+    public function captain(): Members
+    {
+        $team_member = Team_Member::where('team_id', $this->id)->where('is_captain', true)->first();
+        return Members::find($team_member->member_id);
+    }
 }
