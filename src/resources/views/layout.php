@@ -13,9 +13,14 @@
 
 <body>
     <header id="navbar">
-        <a class="btn" href="?view=home">Accueil</a>
+        <a class="btn" href="./">Accueil</a>
+        <a class="btn" href="?view=my-teams">Mes équipes</a>
         <a class="btn" href="?view=membres">Liste des membres</a>
     </header>
+    <div id="hero">
+        <h1>Teambuilder</h1>
+        <p>Connecté en tant que: <?= $_SESSION['userLog']->name ?></p>
+    </div>
     <?= $content ?>
 </body>
 
