@@ -9,6 +9,7 @@ use \App\Controllers\HomeController;
 use App\Controllers\MembersController;
 use App\Controllers\MyTeamsController;
 use App\Controllers\TeamController;
+use App\Controllers\ModeratorsController;
 
 $_SESSION['userLog'] = Members::find(USER_ID); // Armand
 
@@ -27,12 +28,16 @@ switch ($view) {
             (new MembersController())->index();
             break;
         }
-    case 'my-teams': {
+    case 'mes-equipes': {
             (new MyTeamsController())->index();
             break;
         }
-    case 'team': {
+    case 'equipe': {
             (new TeamController())->index();
+            break;
+        }
+    case 'moderateurs': {
+            (new ModeratorsController())->index();
             break;
         }
     default: {

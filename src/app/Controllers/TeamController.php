@@ -10,9 +10,9 @@ class TeamController
     {
         $idTeam = 0;
 
-        if(isset($_GET['team']))
+        if(isset($_GET['equipe']))
         {
-            $idTeam = (int)$_GET['team'];
+            $idTeam = (int)$_GET['equipe'];
         }
 
         $team = Teams::find($idTeam);

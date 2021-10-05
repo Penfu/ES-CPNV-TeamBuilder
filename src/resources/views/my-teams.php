@@ -24,7 +24,7 @@
 
             <?php foreach ($teams as $team) : ?>
                 <tr>
-                    <td><a href="?view=team&team=<?= $team->id ?>"><?= $team->name ?></a></td>
+                    <td><a href="?view=equipe&equipe=<?= $team->id ?>"><?= $team->name ?></a></td>
                     <td><?= $team->captain()->name ?></td>
                     <td><?= count($team->members()) ?></td>
                 </tr>

@@ -14,8 +14,9 @@
 <body>
     <header id="navbar">
         <a class="btn" href="./">Accueil</a>
-        <a class="btn" href="?view=my-teams">Mes équipes</a>
+        <a class="btn" href="?view=mes-equipes">Mes équipes</a>
         <a class="btn" href="?view=membres">Liste des membres</a>
+        <a class="btn" href="?view=moderateurs">Modérateurs</a>
     </header>
     <div id="hero">
         <h1>Teambuilder</h1>
