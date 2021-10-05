@@ -3,6 +3,8 @@
 use PHPUnit\Framework\TestCase;
 use App\Models\Members;
 
+require dirname(dirname(dirname(__FILE__))) . '/config/config.php';
+
 class MemberTest extends TestCase
 {
     /**
@@ -33,26 +35,20 @@ class MemberTest extends TestCase
 
     public function testCreate()
     {
-        $this->assertTrue(Members::create(["name" => "XXX", "password" => 'XXXPa$$w0rd', "role_id" => 1]));
-        $this->assertFalse(Members::create(["name" => "XXX", "password" => 'XXXPa$$w0rd', "role_id" => 1]));
+        $member = Members::create(["name" => "XXX", "password" => 'XXXPa$$w0rd', "role_id" => 1]);
+        $this->assertEquals('XXX', $member->name);
+        $this->assertEquals('XXXPa$$w0rd', $member->password);
+        $this->assertEquals("1", $member->role_id);
     }
 
     public function testSave()
     {
-        $newname = 'newname';
+        $member = Members::find(1);
+        $member->name = 'newname';
+        $member->save();
 
-        $Members = Members::find(1);
-        $savename = $Members->name;
-        $Members->name = $newname;
-
-        $this->assertTrue($Members->save());
-        $this->assertEquals($newname, Members::find(1)->name);
-
-        // Reset
-        $Members->name = $savename;
-        $Members->save();
+        $this->assertEquals('newname', Members::find(1)->name);
     }
-
 
     public function testSaveRejectsDuplicates()
     {
