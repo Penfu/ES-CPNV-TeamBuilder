@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Teambuilder - Membres</title>
+    <title>Teambuilder - Modérateurs</title>
 </head>
 
 <body>
