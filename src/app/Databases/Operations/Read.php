@@ -95,7 +95,7 @@ class Read extends Query
      */
     private function execute(): array | Model | null
     {
-        $stmt = Connector::connect()->prepare($this->query);
+        $stmt = Connector::getInstance()->pdo()->prepare($this->query);
         $stmt->execute($this->params);
         $stmt->setFetchMode(\PDO::FETCH_CLASS, $this->class);
         $result = $stmt->fetchAll();

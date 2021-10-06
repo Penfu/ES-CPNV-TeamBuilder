@@ -43,6 +43,6 @@ class Update extends Query
      */
     private function execute()
     {
-        Connector::connect()->prepare($this->query)->execute(array_merge($this->params, $this->conditions));
+        Connector::getInstance()->pdo()->prepare($this->query)->execute(array_merge($this->params, $this->conditions));
     }
 }

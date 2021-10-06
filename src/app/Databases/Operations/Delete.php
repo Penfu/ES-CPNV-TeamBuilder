@@ -31,6 +31,6 @@ class Delete extends Query
      */
     private function execute()
     {
-        Connector::connect()->prepare($this->query)->execute($this->params);
+        Connector::getInstance()->pdo()->prepare($this->query)->execute($this->params);
     }
 }

@@ -35,7 +35,7 @@ class Create extends Query
      */
     public function execute(): int
     {
-        $pdo = Connector::connect();
+        $pdo = Connector::getInstance()->pdo();
         $pdo->prepare($this->query)->execute($this->params);
 
         return $pdo->lastInsertId();
