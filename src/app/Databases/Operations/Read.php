@@ -9,7 +9,8 @@ use App\Databases\Connector;
 class Read extends Query
 {
     private array $columns;
-    private ?array $conditions;
+    private ?array $whereConditions;
+    private ?array $inConditions;
     private string $query;
     private array $orderBy;
     private string $orderDirection;
@@ -33,8 +34,17 @@ class Read extends Query
      */
     public function where(string $column, string|int $value): self
     {
-        $this->conditions[] = $column;
+        $this->whereConditions[] = $column;
         $this->params[$column] = $value;
+
+        return $this;
+    }
+
+    public function in(array $values): self
+    {
+        for ($i = 0; $i < count($values); $i++) {
+            $this->inConditions[] = $values[$i];
+        }
 
         return $this;
     }
@@ -43,7 +53,7 @@ class Read extends Query
     {
         $this->orderBy[] = $column;
         $this->orderDirection = $direction;
-        
+
         return $this;
     }
 
@@ -64,9 +74,13 @@ class Read extends Query
     {
         $this->query = 'SELECT ' . implode(', ', $this->columns) . ' FROM ' . $this->table;
 
-        if (isset($this->conditions) && !empty($this->conditions)) {
-            for ($i = 0; $i < count($this->conditions); $i++) $this->conditions[$i] .= ' = :' . $this->conditions[$i];
-            $this->query .= ' WHERE ' . implode(' AND ', $this->conditions);
+        if (isset($this->whereConditions) && !empty($this->whereConditions)) {
+            for ($i = 0; $i < count($this->whereConditions); $i++) $this->whereConditions[$i] .= ' = :' . $this->whereConditions[$i];
+            $this->query .= ' WHERE ' . implode(' AND ', $this->whereConditions);
+        }
+
+        if (isset($this->inConditions) && !empty($this->inConditions)) {
+            $this->query .= ' WHERE id IN (' . implode(',', $this->inConditions) . ')';
         }
 
         if (isset($this->orderBy)) {

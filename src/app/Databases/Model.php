@@ -12,11 +12,20 @@ class Model
     use \App\Traits\AutoProperties;
 
     /**
-     * @return object[]
+     * @return Read
      */
-    public static function all(): array
+    public static function read() : Read
     {
-        return (new Read(static::class, array_keys(get_class_vars(static::class))))->get();
+        return (new Read(static::class, array_keys(get_class_vars(static::class))));
+    }
+
+    /**
+     * @return Read|Read[]
+     */
+    public static function all(?bool $returnQuery = false): Read | array
+    {
+        $query = (new Read(static::class, array_keys(get_class_vars(static::class))));
+        return $returnQuery ? $query : $query->get();
     }
 
     /**
@@ -31,8 +40,9 @@ class Model
     /**
      * @param string $column of the where clause
      * @param string|int $value of the where clause
+     * @return Read
      */
-    public static function where($column, $value)
+    public static function where(string $column, $value) : Read
     {
         return (new Read(static::class, array_keys(get_class_vars(static::class))))->where($column, $value);
     }

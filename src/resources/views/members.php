@@ -14,8 +14,7 @@
         <?php foreach ($members as $member) : ?>
             <tr>
                 <td><?= $member->name ?></td>
-                <td><?= implode(', ', $this->pluck($member->teams(), 'name')) ?></td>
-            </tr>
+                <td><?= implode(', ', array_map(fn($obj) => $obj->name, $member->teams())) ?></td>            </tr>
         <?php endforeach ?>
     </table>
 </div>

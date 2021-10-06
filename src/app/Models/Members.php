@@ -20,18 +20,13 @@ class Members extends Model
         return Roles::find($this->role_id);
     }
 
-    public function teams(): array
+    public function teams() : array|null
     {
         $teams_members = Team_Member::where('member_id', $this->id)->get();
-        $teams = [];
 
-        foreach ($teams_members as $team_member) {
-            $teams[] = Teams::find($team_member->team_id);
-        }
-
-        usort($teams, function ($a, $b) {
-            return strcmp($a->name, $b->name);
-        });
+        $teams = empty($teams_members) ? 
+        [] :
+        Teams::read()->in(array_map(fn($obj) => $obj->team_id, $teams_members))->get();
 
         return $teams;
     }
