@@ -1,6 +1,5 @@
 <head>
     <title>Teambuilder - Modérateurs</title>
-    <link rel="stylesheet" href="/css/moderators.css">
 </head>
 
 

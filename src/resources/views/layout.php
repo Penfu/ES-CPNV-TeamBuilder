@@ -9,11 +9,15 @@
     <link rel="stylesheet" href="/css/app.css">
 </head>
 
-<body>
-    <header>
-        <?php include(COMPONENT_ROOT . '/navbar.php') ?>
-    </header>
-    <?= $content ?>
+<body class="dark">
+    <div class="min-h-screen dark:bg-dark-900 dark:text-dark-100">
+        <header>
+            <?php include(COMPONENT_ROOT . '/navbar.php') ?>
+        </header>
+        <div class="min-h-full">
+            <?= $content ?>
+        </div>
+    </div>
 </body>
 
 </html>

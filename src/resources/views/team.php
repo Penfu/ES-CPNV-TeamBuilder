@@ -1,6 +1,5 @@
 <head>
     <title>Teambuilder - Equipe</title>
-    <link rel="stylesheet" href="/css/team.css">
 </head>
 
 <div class="container" id="team-info-section">
