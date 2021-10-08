@@ -20,16 +20,18 @@ class Delete extends Query
 
     /**
      * Build the query
+     * @return void
      */
-    private function build()
+    private function build(): void
     {
         $this->query = 'DELETE FROM ' . $this->table . ' WHERE ' . array_key_first($this->params) . ' = :' . array_key_first($this->params);
     }
 
     /**
      * Execute the query
+     * @return void
      */
-    private function execute()
+    private function execute(): void
     {
         Connector::getInstance()->pdo()->prepare($this->query)->execute($this->params);
     }

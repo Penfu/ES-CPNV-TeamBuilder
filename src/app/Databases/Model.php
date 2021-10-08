@@ -20,7 +20,7 @@ class Model
     }
 
     /**
-     * @return Read|Read[]
+     * @return Read|Model[]
      */
     public static function all(?bool $returnQuery = false): Read | array
     {

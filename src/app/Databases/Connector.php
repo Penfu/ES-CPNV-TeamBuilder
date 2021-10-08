@@ -19,7 +19,10 @@ class Connector
         $this->pdo->exec('SET NAMES utf8');
     }
 
-    public static function getInstance()
+    /**
+     * @return self
+     */
+    public static function getInstance(): self
     {
         if (!self::$instance) {
             self::$instance = new self;
@@ -28,7 +31,10 @@ class Connector
         return self::$instance;
     }
 
-    public function pdo()
+    /**
+     * @return PDO
+     */
+    public function pdo(): PDO
     {
         return $this->pdo;
     }

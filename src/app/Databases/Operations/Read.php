@@ -17,7 +17,7 @@ class Read extends Query
     private bool $returnAsDirectObject = false;
 
     /**
-     * @param Model $class is the Model calling the query
+     * @param string $class is the Model calling the query
      * @param array $columns is an array of object attributes
      */
     public function __construct(string $class, array $columns)
