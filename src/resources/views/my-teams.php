@@ -3,7 +3,21 @@
 </head>
 
 <div class="container max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-    <h2 class="pt-12 pb-6 text-gray-100 text-xl">Mes équipes</h2>
+
+    <div class="flex justify-between mt-12 mb-5">
+        <div class="inline-block">
+            <h2 class=" text-gray-100 text-xl">Mes équipes</h2>
+        </div>
+        <div class="order-last">
+            <button id="btn-open-modal" class="pl-1 pr-2 py-2 rounded text-sm dark:bg-dark-700 dark:hover:bg-dark-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                Créer une équipe
+            </button>
+        </div>
+    </div>
+
 
     <div class="flex flex-col lg:grid lg:gap-4 2xl:gap-6 lg:grid-cols-4 2xl:row-span-2">
         <?php foreach ($teams as $team) : ?>
@@ -35,3 +49,5 @@
 
     </div>
 </div>
+
+<?php include(VIEW_ROOT . '/components/team-creation-modal.php') ?>

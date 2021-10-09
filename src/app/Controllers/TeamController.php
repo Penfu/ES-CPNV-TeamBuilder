@@ -28,4 +28,9 @@ class TeamController
         $content = ob_get_clean();
         require VIEW_ROOT . "/layout.php";
     }
+
+    public function createTeam()
+    {
+        
+    }
 }
