@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\Teams;
-
 class MyTeamsController extends Controller
 {
     public function index()

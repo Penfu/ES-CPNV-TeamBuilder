@@ -23,10 +23,7 @@ class Members extends Model
     public function teams() : array|null
     {
         $teams_members = Team_Member::where('member_id', $this->id)->get();
-
-        $teams = empty($teams_members) ? 
-        [] :
-        Teams::read()->in(array_map(fn($obj) => $obj->team_id, $teams_members))->get();
+        $teams = empty($teams_members) ? [] : Teams::read()->in(array_map(fn($obj) => $obj->team_id, $teams_members))->get();
 
         return $teams;
     }
