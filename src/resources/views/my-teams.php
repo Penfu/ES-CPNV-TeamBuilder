@@ -20,7 +20,7 @@
 
 
     <div class="flex flex-col lg:grid lg:gap-4 2xl:gap-6 lg:grid-cols-4 2xl:row-span-2">
-        <?php foreach ($teams as $team) : ?>
+        <?php foreach ($params['teams'] as $team) : ?>
             <div class="bg-gray-200 dark:bg-dark-800 lg:order-4 lg:row-span-2 2xl:row-span-1 col-span-2 rounded-lg shadow-xl mb-5 lg:mb-0 2xl:mb-8 lg:pb-1">
                 <div class="ml-8 mt-4">
                     <a href="equipe-<?= $team->id ?>" class="primary-color-blackish-blue text-xs md:text-base 2xl:text-2xl">
@@ -50,4 +50,4 @@
     </div>
 </div>
 
-<?php include(VIEW_ROOT . '/components/team-creation-modal.php') ?>
+<?php include(VIEW_ROOT . 'components/team-creation-modal.php') ?>

@@ -2,13 +2,10 @@
 
 namespace App\Controllers;
 
-class HomeController
+class HomeController extends Controller
 {
     public function index()
     {
-        ob_start();
-        require VIEW_ROOT . "/home.php";
-        $content = ob_get_clean();
-        require VIEW_ROOT . "/layout.php";
+        return $this->render('home');
     }
 }

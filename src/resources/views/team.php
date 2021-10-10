@@ -3,7 +3,7 @@
 </head>
 
 <div class="container" id="team-info-section">
-    <h2>#<?= $team->id ?> <?= $team->name ?></h2>
+    <h2>#<?= $params['team']->id ?> <?= $params['team']->name ?></h2>
 </div>
 
 <div class="container" id="members-list-section">
@@ -13,7 +13,7 @@
             <th>Membre</th>
         </tr>
 
-        <?php foreach ($members as $member) : ?>
+        <?php foreach ($params['team']->members() as $member) : ?>
             <tr>
                 <td><?= $member->role()->name ?></td>
                 <td><?= $member->name ?></td>

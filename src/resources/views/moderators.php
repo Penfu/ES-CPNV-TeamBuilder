@@ -10,7 +10,7 @@
             <th>Modérateurs</th>
         </tr>
 
-        <?php foreach ($moderators as $moderator) : ?>
+        <?php foreach ($params['moderators'] as $moderator) : ?>
             <tr>
                 <td><?= $moderator->name ?></td>
             </tr>

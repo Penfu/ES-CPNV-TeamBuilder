@@ -4,7 +4,7 @@ namespace App\Databases;
 
 use PDO;
 
-require_once APP_ROOT . '/.env.php';
+require_once APP_ROOT . '.env.php';
 
 class Connector
 {

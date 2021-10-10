@@ -4,15 +4,12 @@ namespace App\Controllers;
 
 use App\Models\Members;
 
-class MembersController
+class MembersController extends Controller
 {
     public function index()
     {
         $members = Members::all(true)->orderBy('name')->get();
 
-        ob_start();
-        require VIEW_ROOT . "/members.php";
-        $content = ob_get_clean();
-        require VIEW_ROOT . "/layout.php";
+        return $this->render('members', compact('members'));
     }
 }

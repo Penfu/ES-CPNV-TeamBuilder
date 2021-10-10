@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Teams;
 
-class TeamController
+class TeamController extends Controller
 {
     public function index($params)
     {
@@ -15,12 +15,7 @@ class TeamController
             exit();
         }
 
-        $members = $team->members();
-
-        ob_start();
-        require VIEW_ROOT . "/team.php";
-        $content = ob_get_clean();
-        require VIEW_ROOT . "/layout.php";
+        return $this->render('team', compact('team'));
     }
 
     public function createTeam()

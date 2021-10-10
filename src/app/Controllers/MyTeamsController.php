@@ -4,15 +4,12 @@ namespace App\Controllers;
 
 use App\Models\Teams;
 
-class MyTeamsController
+class MyTeamsController extends Controller
 {
     public function index()
     {
         $teams = $_SESSION['userLog']->teams();
 
-        ob_start();
-        require VIEW_ROOT . "/my-teams.php";
-        $content = ob_get_clean();
-        require VIEW_ROOT . "/layout.php";
+        return $this->render('my-teams', compact('teams'));
     }
 }

@@ -2,12 +2,11 @@
 
 require dirname(dirname(__FILE__)) . '/vendor/autoload.php';
 require dirname(dirname(__FILE__)) . '/config/config.php';
-require_once APP_ROOT . '/.env.php';
+require_once APP_ROOT . '.env.php';
 
 use Router\Router;
-use \App\Models\Members;
 
-$_SESSION['userLog'] = Members::find(USER_ID);
+$_SESSION['userLog'] = App\Models\Members::find(USER_ID);
 
 $url = $_SERVER['REQUEST_URI'];
 $GLOBALS['view'] = $url;
