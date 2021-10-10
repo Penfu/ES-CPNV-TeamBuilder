@@ -12,6 +12,6 @@ class ModeratorsController extends Controller
     {
         $moderators = Members::where('role_id', Roles::where('slug', 'MOD')->first()->id)->orderBy('name')->get();
         
-        return $this->render('moderators', compact('moderators'));
+        return $this->render('moderators', ['moderators' => $moderators]);
     }
 }

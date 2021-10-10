@@ -10,6 +10,6 @@ class MembersController extends Controller
     {
         $members = Members::all(true)->orderBy('name')->get();
 
-        return $this->render('members', compact('members'));
+        return $this->render('members', ['members' => $members]);
     }
 }

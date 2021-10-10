@@ -15,7 +15,7 @@ class TeamController extends Controller
             exit();
         }
 
-        return $this->render('team', compact('team'));
+        return $this->render('team', ['team' => $team]);
     }
 
     public function createTeam()

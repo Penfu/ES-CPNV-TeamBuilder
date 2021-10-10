@@ -10,6 +10,6 @@ class MyTeamsController extends Controller
     {
         $teams = $_SESSION['userLog']->teams();
 
-        return $this->render('my-teams', compact('teams'));
+        return $this->render('my-teams', ['teams' => $teams]);
     }
 }
