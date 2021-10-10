@@ -23,7 +23,7 @@
         <?php foreach ($teams as $team) : ?>
             <div class="bg-gray-200 dark:bg-dark-800 lg:order-4 lg:row-span-2 2xl:row-span-1 col-span-2 rounded-lg shadow-xl mb-5 lg:mb-0 2xl:mb-8 lg:pb-1">
                 <div class="ml-8 mt-4">
-                    <a href="?view=equipe&equipe=<?= $team->id ?>" class="primary-color-blackish-blue text-xs md:text-base 2xl:text-2xl">
+                    <a href="equipe-<?= $team->id ?>" class="primary-color-blackish-blue text-xs md:text-base 2xl:text-2xl">
                         <h2><?= $team->name ?></h2>
                     </a>
                     <h2 class="text-white text-xs md:text-base 2xl:text-2xl text-opacity-50">
@@ -40,7 +40,7 @@
                         </span>
                     </div>
                     <div class="order-last">
-                        <a href="?view=equipe&equipe=<?= $team->id ?>" class="px-4 py-2 rounded text-sm dark:bg-dark-700 dark:hover:bg-dark-600">Voir l'équipe</a>
+                        <a href="equipe-<?= $team->id ?>" class="px-4 py-2 rounded text-sm dark:bg-dark-700 dark:hover:bg-dark-600">Voir l'équipe</a>
                     </div>
                 </div>
 

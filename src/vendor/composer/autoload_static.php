@@ -25,6 +25,10 @@ class ComposerStaticInit84fe4701930bb75c5d0cdd9c22420fcf
         array (
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
+        'R' => 
+        array (
+            'Router\\' => 7,
+        ),
         'P' => 
         array (
             'Prophecy\\' => 9,
@@ -55,6 +59,10 @@ class ComposerStaticInit84fe4701930bb75c5d0cdd9c22420fcf
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Router\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/router',
         ),
         'Prophecy\\' => 
         array (

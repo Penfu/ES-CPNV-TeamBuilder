@@ -6,15 +6,9 @@ use App\Models\Teams;
 
 class TeamController
 {
-    public function index()
+    public function index($params)
     {
-        $idTeam = 0;
-
-        if (isset($_GET['equipe'])) {
-            $idTeam = (int)$_GET['equipe'];
-        }
-
-        $team = Teams::find($idTeam);
+        $team = Teams::find($params);
 
         if (is_null($team)) {
             header('Location: ./');
