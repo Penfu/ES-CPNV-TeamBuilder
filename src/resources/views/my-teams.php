@@ -18,18 +18,17 @@
         </div>
     </div>
 
-
     <div class="flex flex-col lg:grid lg:gap-4 2xl:gap-6 lg:grid-cols-4 2xl:row-span-2">
-        <?php foreach ($params['teams'] as $team) : ?>
+        <?php foreach ($teams as $team) : ?>
             <div class="bg-gray-200 dark:bg-dark-800 lg:order-4 lg:row-span-2 2xl:row-span-1 col-span-2 rounded-lg shadow-xl mb-5 lg:mb-0 2xl:mb-8 lg:pb-1">
-                <div class="ml-8 mt-4">
-                    <a href="equipe-<?= $team->id ?>" class="primary-color-blackish-blue text-xs md:text-base 2xl:text-2xl">
+                <div class="px-8 py-2 rounded-t-lg dark:bg-dark-700">
+                    <a href="equipe-<?= $team->id ?>" class="text-xl">
                         <h2><?= $team->name ?></h2>
                     </a>
-                    <h2 class="text-white text-xs md:text-base 2xl:text-2xl text-opacity-50">
-                        <?= $team->captain()->name ?>
-                    </h2>
                 </div>
+                <h2 class="mx-8 my-4 text-white text-base text-opacity-50">
+                    <?= $team->captain()->name ?>
+                </h2>
                 <div class="flex justify-between mx-8 my-4">
                     <div class="inline-block">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
