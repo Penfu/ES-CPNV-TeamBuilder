@@ -4,32 +4,43 @@ namespace Router;
 
 class Router
 {
-    public $url;
-    public $routes = [];
+    private $url;
+    public static $routes = [];
 
     public function __construct($url)
     {
         $this->url = trim($url, '/');
     }
 
-    public function get(string $path, string $action)
+    public function get(string $path, string $action): Route
     {
-        $this->routes['GET'][] = new Route($path, $action);
+        return self::$routes['GET'][] = new Route($path, $action);
     }
 
-    public function post(string $path, string $action)
+    public function post(string $path, string $action): Route
     {
-        $this->routes['POST'][] = new Route($path, $action);
+        return self::$routes['POST'][] = new Route($path, $action);
+    }
+
+    public static function route(string $name)
+    {
+        return './' . self::$routes['GET'][$name]->path;
+    }
+
+    public static function redirect($path)
+    {
+        header('Location: ' . $path);
+        exit();
     }
 
     public function run()
     {
-        foreach ($this->routes[$_SERVER['REQUEST_METHOD']] as $route) {
+        foreach (self::$routes[$_SERVER['REQUEST_METHOD']] as $route) {
             if ($route->matches($this->url)) {
                 return $route->execute();
             }
         }
 
-        return header('HTTP/1.0 404 Not Found');
+        require VIEW_ROOT . 'errors/404.php';
     }
 }

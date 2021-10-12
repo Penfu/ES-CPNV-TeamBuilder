@@ -27,4 +27,13 @@ class Members extends Model
 
         return $teams;
     }
+
+
+    /**
+     * @return bool
+     */
+    public function isModerator(): bool
+    {
+        return $this->role_id == Roles::where('slug', 'MOD')->first()->id;
+    }
 }

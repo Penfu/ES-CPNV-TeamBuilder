@@ -33,7 +33,7 @@
                                 <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-dark-800 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Move</a>
                             </div>
                             <div class="py-1" role="none">
-                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-red-500 text-sm" role="menuitem" tabindex="-1" id="menu-item-6">Supprimer</a>
+                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-red-500 text-sm" role="menuitem" tabindex="-1" id="menu-item-6">Quitter</a>
                             </div>
                         </div>
                     </div>

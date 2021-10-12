@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use Router\Router;
 use App\Models\Teams;
 use App\Models\States;
 
@@ -12,8 +13,7 @@ class TeamController extends Controller
         $team = Teams::find($params);
 
         if (is_null($team)) {
-            header('Location: ./');
-            exit();
+            Router::redirect(Router::route('home'));
         }
 
         $captain = $team->captain();
@@ -29,8 +29,7 @@ class TeamController extends Controller
         (string)$name = htmlspecialchars($_POST['team-name']);
 
         if (is_null($name) || empty($name)) {
-            header('Location: ./');
-            exit();
+            Router::redirect(Router::route('home'));
         }
 
         $team = Teams::create(['name' => $name, 'state_id' => States::where('slug', 'RECRUTING')->first()->id]);
@@ -41,7 +40,6 @@ class TeamController extends Controller
             $_SESSION['alert'] = "Le nom de l'équipe doit être unique";
         }
 
-        header('Location: ./mes-equipes');
-        exit();
+        Router::redirect(Router::route('my-teams'));
     }
 }

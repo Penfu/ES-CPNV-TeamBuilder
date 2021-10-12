@@ -16,7 +16,13 @@
                                     Nom
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
+                                    Role
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                                     Equipes
+                                </th>
+                                <th scope="col" class="relative px-6 py-3">
+                                    <span class="sr-only">Action</span>
                                 </th>
                             </tr>
                         </thead>
@@ -27,10 +33,18 @@
                                         <?= $member->name ?>
                                     </td>
                                     <td class="px-6 py-2 whitespace-nowrap">
+                                        <?= $member->role()->name ?>
+                                    </td>
+                                    <td class="px-6 py-2 whitespace-nowrap">
                                         <?= implode(', ', array_map(
                                             fn ($team) => "<a href=equipe-" . $team->id . ">" . $team->name . "</a>",
                                             $member->teams()
                                         )) ?>
+                                    </td>
+                                    <td class="px-6 text-right">
+                                        <?php if ($_SESSION['userLog']->isModerator() && !$member->isModerator()) : ?>
+                                            <a href="#" class="px-4 py-2 rounded text-sm dark:bg-dark-700 dark:hover:bg-dark-600">Nommer modérateur</a>
+                                        <?php endif ?>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
