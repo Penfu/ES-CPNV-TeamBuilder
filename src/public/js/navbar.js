@@ -1,7 +1,6 @@
+let menu = document.getElementById('mobile-menu')
 let icoBtnMenuOpen = document.getElementById('ico-btn-menu-open')
 let icoBtnMenuClose = document.getElementById('ico-btn-menu-close')
-
-let menu = document.getElementById('mobile-menu')
 
 document
   .getElementById('btn-toggle-navbar')

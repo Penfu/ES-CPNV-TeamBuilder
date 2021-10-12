@@ -16,7 +16,12 @@ class TeamController extends Controller
             exit();
         }
 
-        return $this->render('team', ['team' => $team]);
+        $captain = $team->captain();
+
+        return $this->render('team', [
+            'team' => $team,
+            'captain' => $captain
+        ]);
     }
 
     public function create()
