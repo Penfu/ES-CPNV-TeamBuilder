@@ -1,4 +1,7 @@
-<?php use App\Controllers\Components\NavbarController; ?>
+<?php 
+use App\Controllers\Components\NavbarController,
+    App\Controllers\Components\BannerController;
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -17,6 +20,9 @@
             <?php (new NavbarController)->render($path); ?>
         </header>
         <div class="min-h-full">
+            <?php if (isset($_SESSION['alert'])) : ?>
+                <?php (new BannerController)->render($_SESSION['alert']); ?>
+            <?php endif ?>
             <?= $content ?>
         </div>
     </div>

@@ -9,7 +9,7 @@
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
         <div class="inline-block align-bottom rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
             <!-- Team creation form -->
-            <form action="" method="POST">
+            <form action="equipe" method="POST">
                 <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4 bg-white dark:bg-dark-900">
                     <div class="sm:flex sm:items-start">
                         <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-purple-100 sm:mx-0 sm:h-10 sm:w-10">
@@ -25,7 +25,7 @@
                     </div>
                     <div class="w-full">
                         <label for="team-name" class="block text-sm font-medium">Nom de l'équipe</label>
-                        <input type="text" name="team-name" id="team-name" autocomplete="false" class="mt-1 px-3 py-2 block w-full dark:bg-dark-800 shadow-sm sm:text-sm rounded-md">
+                        <input type="text" name="team-name" id="team-name" autocomplete="off" required class="mt-1 px-3 py-2 block w-full dark:bg-dark-800 shadow-sm sm:text-sm rounded-md">
                     </div>
                 </div>
                 <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse bg-gray-50 dark:bg-dark-800">

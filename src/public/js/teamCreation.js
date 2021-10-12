@@ -1,5 +1,3 @@
-console.log("Hello Word");
-
 let btnOpen = document.getElementById("btn-open-modal");
 let btnClose = document.getElementById("btn-close-modal");
 let modal = document.getElementById("modal-team-creation");

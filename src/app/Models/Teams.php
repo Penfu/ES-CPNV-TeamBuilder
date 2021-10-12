@@ -26,6 +26,16 @@ class Teams extends Model
         return $members;
     }
 
+    public function addMember(Members $member, ?bool $isCaptain = false)
+    {
+        Team_Member::create([
+            'member_id' => $member->id,
+            'team_id' => $this->id,
+            'membership_type' => 1,
+            'is_captain' => $isCaptain,
+        ]);
+    }
+
     public function captain(): Members
     {
         $team_member = Team_Member::where('team_id', $this->id)->where('is_captain', true)->first();

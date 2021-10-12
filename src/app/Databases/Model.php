@@ -14,7 +14,7 @@ class Model
     /**
      * @return Read
      */
-    public static function read() : Read
+    public static function read(): Read
     {
         return (new Read(static::class, array_keys(get_class_vars(static::class))));
     }
@@ -42,7 +42,7 @@ class Model
      * @param string|int $value of the where clause
      * @return Read
      */
-    public static function where(string $column, $value) : Read
+    public static function where(string $column, $value): Read
     {
         return (new Read(static::class, array_keys(get_class_vars(static::class))))->where($column, $value);
     }
@@ -51,10 +51,14 @@ class Model
      * @param array $values is an array of value correspond to columns of the row you want to create
      * @return object|false
      */
-    public static function create($values): object
+    public static function create($values): object|false
     {
-        $id = (new Create(static::class, $values))->execute();
-        return self::find($id);
+        try {
+            $id = (new Create(static::class, $values))->execute();
+            return self::find($id);
+        } catch (\PDOException $e) {
+            return false;
+        }
     }
 
     /**

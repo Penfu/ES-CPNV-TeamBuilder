@@ -4,7 +4,7 @@ let icoBtnMenuClose = document.getElementById('ico-btn-menu-close')
 let menu = document.getElementById('mobile-menu')
 
 document
-  .querySelector('#btn-toggle-navbar')
+  .getElementById('btn-toggle-navbar')
   .addEventListener('click', function (event) {
     if (menu.classList.contains('hidden')) {
       icoBtnMenuOpen.classList.add('hidden')
