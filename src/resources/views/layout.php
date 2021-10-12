@@ -12,7 +12,10 @@
 <body class="dark">
     <div class="min-h-screen dark:bg-dark-900 dark:text-dark-100">
         <header>
-            <?php include(COMPONENT_ROOT . 'navbar.php') ?>
+            <?php
+            use App\Controllers\Components\NavbarController;
+            (new NavbarController)->index($path);
+            ?>
         </header>
         <div class="min-h-full">
             <?= $content ?>
