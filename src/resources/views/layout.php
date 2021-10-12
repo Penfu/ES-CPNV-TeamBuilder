@@ -1,3 +1,5 @@
+<?php use App\Controllers\Components\NavbarController; ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -12,10 +14,7 @@
 <body class="dark">
     <div class="min-h-screen dark:bg-dark-900 dark:text-dark-100">
         <header>
-            <?php
-            use App\Controllers\Components\NavbarController;
-            (new NavbarController)->index($path);
-            ?>
+            <?php (new NavbarController)->render($path); ?>
         </header>
         <div class="min-h-full">
             <?= $content ?>

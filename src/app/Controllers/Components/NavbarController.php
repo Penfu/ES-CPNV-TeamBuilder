@@ -4,7 +4,7 @@ namespace App\Controllers\Components;
 
 class NavbarController
 {
-    public function index($path)
+    public function render($path)
     {
         $buttons = [
             ['name' => 'Mes équipes', 'route' => 'mes-equipes', 'isActive' => $path == 'my-teams'],
