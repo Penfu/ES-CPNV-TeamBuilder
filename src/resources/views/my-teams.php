@@ -1,9 +1,4 @@
-<head>
-    <title>Teambuilder - Mes équipes</title>
-</head>
-
 <div class="container max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-
     <div class="flex justify-between mt-12 mb-5">
         <div class="inline-block">
             <h2 class=" text-gray-100 text-xl">Mes équipes</h2>
@@ -45,7 +40,6 @@
 
             </div>
         <?php endforeach ?>
-
     </div>
 </div>
 
