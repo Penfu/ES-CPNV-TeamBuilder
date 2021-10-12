@@ -2,6 +2,7 @@
     <script type="text/javascript" src="/js/banner.js" defer></script>
 </head>
 
+<!-- component -->
 <div id="banner" class="bg-indigo-600">
     <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between flex-wrap">

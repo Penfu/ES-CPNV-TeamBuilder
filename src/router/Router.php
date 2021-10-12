@@ -24,7 +24,7 @@ class Router
 
     public static function route(string $name)
     {
-        return './' . self::$routes['GET'][$name]->path;
+        return '/' . self::$routes['GET'][$name]->path;
     }
 
     public static function redirect($path)

@@ -13,6 +13,7 @@ $router = new Router($_SERVER['REQUEST_URI']);
 
 $router->get('/', 'App\Controllers\HomeController@index')->name('home');
 $router->get('/membres', 'App\Controllers\MembersController@index')->name('members');
+$router->post('/membre-:id/moderateur', 'App\Controllers\MembersController@defineModerator');
 $router->get('/mes-equipes', 'App\Controllers\MyTeamsController@index')->name('my-teams');
 $router->get('/equipe-:id', 'App\Controllers\TeamController@index')->name('team');
 $router->post('/equipe', 'App\Controllers\TeamController@create');

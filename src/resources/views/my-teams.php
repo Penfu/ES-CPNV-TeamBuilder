@@ -43,4 +43,4 @@
     </div>
 </div>
 
-<?php include(VIEW_ROOT . 'components/team-creation-modal.php') ?>
+<?php include(VIEW_ROOT . 'components/modal-team-creation.php') ?>

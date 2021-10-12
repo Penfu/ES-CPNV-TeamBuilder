@@ -43,7 +43,7 @@
                                     </td>
                                     <td class="px-6 text-right">
                                         <?php if ($_SESSION['userLog']->isModerator() && !$member->isModerator()) : ?>
-                                            <a href="#" class="px-4 py-2 rounded text-sm dark:bg-dark-700 dark:hover:bg-dark-600">Nommer modérateur</a>
+                                            <button data-member=<?= json_encode(['id' => $member->id, 'name' => $member->name]) ?> type="button" class="btn-define-moderator px-4 py-2 rounded text-sm dark:bg-dark-700 dark:hover:bg-dark-600">Nommer modérateur</button>
                                         <?php endif ?>
                                     </td>
                                 </tr>
@@ -55,3 +55,7 @@
         </div>
     </div>
 </div>
+
+<?php if ($_SESSION['userLog']->isModerator()) : ?>
+    <?php include(VIEW_ROOT . 'components/modal-define-moderator-confirmation.php') ?>
+<?php endif ?>
