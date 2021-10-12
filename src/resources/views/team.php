@@ -50,7 +50,7 @@
                             <p class="inline-block"><?= $member->name ?></p>
                         </div>
                     <?php else : ?>
-                        <p><?= $member->name ?></p>
+                        <p class="ml-6"><?= $member->name ?></p>
                     <?php endif ?>
                 <?php endforeach ?>
             </div>
