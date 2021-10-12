@@ -27,7 +27,10 @@
                                         <?= $member->name ?>
                                     </td>
                                     <td class="px-6 py-2 whitespace-nowrap">
-                                        <?= implode(', ', array_map(fn ($obj) => $obj->name, $member->teams())) ?>
+                                        <?= implode(', ', array_map(
+                                            fn ($team) => "<a href=equipe-" . $team->id . ">" . $team->name . "</a>",
+                                            $member->teams()
+                                        )) ?>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
