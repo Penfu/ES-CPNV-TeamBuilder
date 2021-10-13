@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 abstract class Controller
 {
-    public function render(string $path, ?array $params = null)
+    public function render(string $path, array $params = [])
     {
         ob_start();
         $path = str_replace('.', DIRECTORY_SEPARATOR, $path);

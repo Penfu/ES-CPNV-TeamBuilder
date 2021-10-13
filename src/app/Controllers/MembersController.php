@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Providers\Auth;
 use App\Models\Members;
 use App\Models\Roles;
 use Router\Router;
@@ -12,7 +13,10 @@ class MembersController extends Controller
     {
         $members = Members::all(true)->orderBy('name')->get();
 
-        return $this->render('members', ['members' => $members]);
+        return $this->render('members', [
+            'Auth' => Auth::class,
+            'members' => $members
+        ]);
     }
 
     public function defineModerator($memberId)

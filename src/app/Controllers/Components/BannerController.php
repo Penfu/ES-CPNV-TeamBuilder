@@ -2,11 +2,15 @@
 
 namespace App\Controllers\Components;
 
-class BannerController
-{
-    public function render($alert)
+class BannerController extends Component
+{    
+    public function index()
     {
+        $alert = $_SESSION['alert'];
         unset($_SESSION['alert']);
-        require VIEW_ROOT . 'components/banner.php';
+
+        return parent::render('banner', [
+            'alert' => $alert
+        ]);
     }
 }

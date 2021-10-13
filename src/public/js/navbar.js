@@ -1,17 +1,28 @@
-let menu = document.getElementById('mobile-menu')
+let mobileMenu = document.getElementById('mobile-menu')
+let profileDropdown = document.getElementById('profile-dropdown')
 let icoBtnMenuOpen = document.getElementById('ico-btn-menu-open')
 let icoBtnMenuClose = document.getElementById('ico-btn-menu-close')
 
 document
   .getElementById('btn-toggle-navbar')
   .addEventListener('click', function (event) {
-    if (menu.classList.contains('hidden')) {
+    if (mobileMenu.classList.contains('hidden')) {
       icoBtnMenuOpen.classList.add('hidden')
       icoBtnMenuClose.classList.remove('hidden')
-      menu.classList.remove('hidden')
+      mobileMenu.classList.remove('hidden')
     } else {
       icoBtnMenuOpen.classList.remove('hidden')
       icoBtnMenuClose.classList.add('hidden')
-      menu.classList.add('hidden')
+      mobileMenu.classList.add('hidden')
+    }
+  })
+
+document
+  .getElementById('btn-profile-dropdown')
+  .addEventListener('click', function (event) {
+    if (profileDropdown.classList.contains('hidden')) {
+      profileDropdown.classList.remove('hidden')
+    } else {
+      profileDropdown.classList.add('hidden')
     }
   })

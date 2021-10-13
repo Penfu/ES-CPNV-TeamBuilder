@@ -17,6 +17,26 @@ module.exports = {
         }
       },
       keyframes: {
+        'show': {
+          from: {
+            opacity: 0,
+            scale: 0.95
+          },
+          to: {
+            opacity: 1,
+            scale: 1
+          }
+        },        
+        'hide': {
+          from: {
+            opacity: 1,
+            scale: 1
+          },
+          to: {
+            opacity: 0,
+            scale: 0.95
+          }
+        },
         'fade': {
           '0%': {
             opacity: '0'
@@ -37,6 +57,8 @@ module.exports = {
         }
       },
       animation: {
+        'show': 'show 0.5s ease-out',
+        'hide': 'hide 0.5s ease-in',
         'fade': 'fade 0.5s ease-out',
         'fade-in-down': 'fade-in-down 0.5s ease-out'
       }

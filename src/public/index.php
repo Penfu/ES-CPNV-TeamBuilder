@@ -1,13 +1,16 @@
 <?php
 
+use Router\Router;
+use App\Providers\Auth;
+use App\Models\Members;
+
 require dirname(dirname(__FILE__)) . '/vendor/autoload.php';
 require dirname(dirname(__FILE__)) . '/config/config.php';
 require APP_ROOT . '.env.php';
 
-use Router\Router;
-
 session_start();
-$_SESSION['userLog'] = App\Models\Members::find(USER_ID);
+
+Auth::login(Members::find(USER_ID));
 
 $router = new Router($_SERVER['REQUEST_URI']);
 
@@ -18,5 +21,7 @@ $router->get('/mes-equipes', 'App\Controllers\MyTeamsController@index')->name('m
 $router->get('/equipe-:id', 'App\Controllers\TeamController@index')->name('team');
 $router->post('/equipe', 'App\Controllers\TeamController@create');
 $router->get('/moderateurs', 'App\Controllers\ModeratorsController@index')->name('moderators');
+
+$router->post('/logout', 'App\Controllers\MembersController@logout');
 
 $router->run();

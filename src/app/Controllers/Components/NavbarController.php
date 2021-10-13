@@ -3,29 +3,15 @@
 namespace App\Controllers\Components;
 
 use Router\Router;
+use App\Providers\Auth;
 
-class NavbarController
+class NavbarController extends Component
 {
-    public function render($path)
+    public function index()
     {
-        $buttons = [
-            [
-                'name' => 'Mes équipes',
-                'route' => Router::route('my-teams'),
-                'isActive' => $path == Router::route('my-teams')
-            ],
-            [
-                'name' => 'Membres',
-                'route' => Router::route('members'),
-                'isActive' => $path  == Router::route('members')
-            ],
-            [
-                'name' => 'Modérateurs',
-                'route' => Router::route('moderators'),
-                'isActive' => $path == Router::route('moderators')
-            ]
-        ];
-
-        require VIEW_ROOT . 'components/navbar.php';
+        return parent::render('navbar', [
+            'Router' => Router::class,
+            'Auth' => Auth::class,
+        ]);
     }
 }

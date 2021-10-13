@@ -12,7 +12,7 @@
             <div class="flex justify-between px-8 py-2 rounded-t-lg dark:bg-dark-700">
                 <h2 class="my-auto text-xl"><?= $team->name ?></h2>
 
-                <?php if ($_SESSION['userLog'] == $captain) : ?>
+                <?php if ($Auth::user() == $captain) : ?>
                     <div class="relative order-last inline-block text-left">
                         <button type="button" id="btn-team-options" class="inline-flex justify-center w-full px-4 py-2 bg-white dark:bg-dark-900 rounded-md border border-gray-300 dark:border-dark-900 shadow-sm  text-sm font-medium text-gray-700 dark:text-dark-100 hover:bg-gray-50 dark:hover:bg-dark-800 focus:outline-none" aria-expanded="true" aria-haspopup="true">
                             Options
@@ -25,15 +25,15 @@
                         </button>
                         <div id="options" class="hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-dark-900 ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 dark:divide-dark-700 focus:outline-none text-gray-700 dark:text-dark-100" role="menu" aria-orientation="vertical" aria-labelledby="btn-team-options" tabindex="-1">
                             <div class="py-1" role="none">
-                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-dark-800 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Edit</a>
-                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-dark-800 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Duplicate</a>
+                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-dark-800 text-sm" role="menuitem" tabindex="1" id="menu-item-0">Edit</a>
+                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-dark-800 text-sm" role="menuitem" tabindex="2" id="menu-item-1">Duplicate</a>
                             </div>
                             <div class="py-1" role="none">
-                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-dark-800 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">Archive</a>
-                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-dark-800 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Move</a>
+                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-dark-800 text-sm" role="menuitem" tabindex="3" id="menu-item-2">Archive</a>
+                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-dark-800 text-sm" role="menuitem" tabindex="4" id="menu-item-3">Move</a>
                             </div>
                             <div class="py-1" role="none">
-                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-red-500 text-sm" role="menuitem" tabindex="-1" id="menu-item-6">Quitter</a>
+                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-red-500 text-sm" role="menuitem" tabindex="5" id="menu-item-6">Quitter</a>
                             </div>
                         </div>
                     </div>
