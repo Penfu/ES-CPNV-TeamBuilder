@@ -3,14 +3,14 @@
 </head>
 
 <div class="container max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-    <h2 class="pt-12 pb-6 text-gray-100 text-xl">Liste des membres</h2>
+    <h2 class="pt-12 pb-6 text-xl">Liste des membres</h2>
 
     <div class="flex flex-col">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="shadow overflow-hidden border-b border-gray-200 dark:border-dark-600 sm:rounded-lg">
+                <div class="shadow overflow-hidden border-b border-gray-200 dark:border-dark-5 sm:rounded-lg">
                     <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50 dark:bg-dark-700">
+                        <thead class="bg-gray-50 dark:bg-dark-3">
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                                     Nom
@@ -26,7 +26,7 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200 dark:bg-dark-800 dark:divide-dark-600">
+                        <tbody class="divide-y divide-gray-200 bg-white dark:bg-dark-4 dark:divide-dark-3">
                             <?php foreach ($members as $member) : ?>
                                 <tr>
                                     <td class="px-6 py-2 whitespace-nowrap">
@@ -43,7 +43,7 @@
                                     </td>
                                     <td class="px-6 text-right">
                                         <?php if ($Auth::user()->isModerator() && !$member->isModerator()) : ?>
-                                            <button data-member=<?= json_encode(['id' => $member->id, 'name' => $member->name]) ?> type="button" class="btn-define-moderator px-4 py-2 rounded text-sm dark:bg-dark-700 dark:hover:bg-dark-600">Nommer modérateur</button>
+                                            <button data-member=<?= json_encode(['id' => $member->id, 'name' => $member->name]) ?> type="button" class="btn-define-moderator px-4 py-2 rounded text-sm dark:bg-dark-4 dark:hover:bg-dark-3">Nommer modérateur</button>
                                         <?php endif ?>
                                     </td>
                                 </tr>

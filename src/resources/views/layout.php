@@ -16,8 +16,8 @@ use App\Controllers\Components\NavbarController,
     <script type="text/javascript" src="/js/darkmode.js" defer></script>
 </head>
 
-<body class="dark">
-    <div class="min-h-screen dark:bg-dark-900 dark:text-dark-100">
+<body>
+    <div class="min-h-screen bg-light-1 dark:bg-dark-5 text-dark-3 dark:text-light-1">
         <header>
             <?= (new NavbarController)->index() ?>
         </header>

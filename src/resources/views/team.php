@@ -4,12 +4,12 @@
 
 <div class="container max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="flex justify-between mt-12 mb-5">
-        <h2 class=" text-gray-100 text-xl">Equipe</h2>
+        <h2 class="text-dark-4 dark:text-light-1 text-xl">Equipe</h2>
     </div>
 
     <div class="flex py-3">
-        <div class="w-full bg-gray-200 dark:bg-dark-800 rounded-lg shadow-xl mb-5 lg:mb-0 2xl:mb-8 lg:pb-1 animate-fade-in-down">
-            <div class="flex justify-between px-8 py-2 rounded-t-lg dark:bg-dark-700">
+        <div class="w-full 1 bg-light-2 dark:bg-dark-4 rounded-lg shadow-xl mb-5 lg:mb-0 2xl:mb-8 lg:pb-1 animate-fade-in-down">
+            <div class="flex justify-between px-8 py-2 rounded-t-lg bg-light-3 dark:bg-dark-3">
                 <h2 class="my-auto text-xl"><?= $team->name ?></h2>
 
                 <?php if ($Auth::user() == $captain) : ?>
@@ -40,7 +40,7 @@
                 <?php endif ?>
             </div>
 
-            <div class="mx-8 my-4 text-white text-base">
+            <div class="mx-8 my-4 text-base">
                 <?php foreach ($team->members() as $member) : ?>
                     <?php if ($member == $captain) : ?>
                         <div class="inline-block">
