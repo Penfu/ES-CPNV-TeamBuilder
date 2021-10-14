@@ -3,8 +3,9 @@
 namespace App\Providers;
 
 use App\Models\Members;
+use Router\Router;
 
-abstract class Auth
+class Auth
 {
     public static function login($user)
     {
@@ -16,6 +17,8 @@ abstract class Auth
         if (isset($_SESSION['user'])) {
             unset($_SESSION['user']);
         }
+
+        Router::redirect('home');
     }
 
     public static function check(): bool

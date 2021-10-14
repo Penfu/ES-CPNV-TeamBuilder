@@ -28,6 +28,6 @@ class MembersController extends Controller
             $member->save();
         }
 
-        Router::redirect(Router::route('members'));
+        Router::redirect('members');
     }
 }

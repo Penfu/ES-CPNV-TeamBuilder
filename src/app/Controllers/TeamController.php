@@ -14,7 +14,7 @@ class TeamController extends Controller
         $team = Teams::find($params);
 
         if (is_null($team)) {
-            Router::redirect(Router::route('home'));
+            Router::redirect('home');
         }
 
         $captain = $team->captain();
@@ -31,7 +31,7 @@ class TeamController extends Controller
         (string)$name = htmlspecialchars($_POST['team-name']);
 
         if (is_null($name) || empty($name)) {
-            Router::redirect(Router::route('home'));
+            Router::redirect('home');
         }
 
         $team = Teams::create(['name' => $name, 'state_id' => States::where('slug', 'RECRUTING')->first()->id]);
@@ -42,6 +42,6 @@ class TeamController extends Controller
             $_SESSION['alert'] = "Le nom de l'équipe doit être unique";
         }
 
-        Router::redirect(Router::route('my-teams'));
+        Router::redirect('my-teams');
     }
 }

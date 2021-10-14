@@ -27,9 +27,9 @@ class Router
         return '/' . self::$routes['GET'][$name]->path;
     }
 
-    public static function redirect($path)
+    public static function redirect($route)
     {
-        header('Location: ' . $path);
+        header('Location: ' . self::route($route));
         exit();
     }
 

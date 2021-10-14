@@ -22,6 +22,6 @@ $router->get('/equipe-:id', 'App\Controllers\TeamController@index')->name('team'
 $router->post('/equipe', 'App\Controllers\TeamController@create');
 $router->get('/moderateurs', 'App\Controllers\ModeratorsController@index')->name('moderators');
 
-$router->post('/logout', 'App\Controllers\MembersController@logout');
+$router->post('/logout', 'App\Providers\Auth@logout');
 
 $router->run();
