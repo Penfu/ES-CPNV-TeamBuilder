@@ -8,7 +8,7 @@
         <div class="relative flex items-center justify-between h-16">
             <div class="absolute inset-y-0 left-0 flex items-center md:hidden">
                 <!-- Mobile menu buttons -->
-                <button type="button" id="btn-toggle-navbar" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                <button type="button" id="btn-toggle-navbar" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
                     <svg id="ico-btn-menu-open" class="h-6 w-6 animate-fade" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
@@ -35,7 +35,7 @@
 
             <?php if ($Auth::check()) : ?>
                 <!-- Profile dropdown -->
-                <div class="ml-3 relative">
+                <div class="hidden md:block ml-3 relative">
                     <div>
                         <button type="button" id="btn-profile-dropdown" class="relative flex text-sm rounded-full" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                             <span class="sr-only">Open user menu</span>
@@ -43,7 +43,7 @@
                         </button>
                     </div>
 
-                    <div id="profile-dropdown" class="hidden origin-top-right absolute right-0 mt-1 w-48 rounded-md shadow-lg py-2 bg-white dark:bg-dark-4 text-gray-700 dark:text-light-1 ring-1 ring-black ring-opacity-5 focus:outline-none divide-y divide-gray-100 dark:divide-dark-600 animate-show" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                    <div id="profile-dropdown" class="hidden origin-top-right absolute right-0 mt-1 w-48 rounded-md shadow-lg py-2 bg-white dark:bg-dark-4 text-gray-700 dark:text-light-1 focus:outline-none divide-y divide-gray-100 dark:divide-dark-600 animate-show" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                         <div class="py-1" role="none">
                             <span class="block px-4 py-2 text-gray-700 dark:text-white" role="menuitem" tabindex="-1" id="user-menu-item-0">
                                 <?= $Auth::user()->name ?>
@@ -72,13 +72,32 @@
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div id="mobile-menu" class="hidden md:hidden animate-fade-in-down">
+    <div id="mobile-menu" class="hidden md:hidden text-light-4 animate-fade-in-down">
         <div class="px-2 pt-2 pb-3 space-y-1">
             <?php if ($Auth::check()) : ?>
-                <a href="<?= $Router::route('my-teams') ?>" class="dark:text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Accueil</a>
+                <a href="<?= $Router::route('my-teams') ?>" class="block px-3 py-2 hover:bg-gray-700 hover:text-white rounded-md font-medium">
+                    Accueil
+                </a>
             <?php endif ?>
-            <a href="<?= $Router::route('members') ?>" class="dark:text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Membres</a>
-            <a href="<?= $Router::route('moderators') ?>" class="dark:text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Modérateurs</a>
+            <a href="<?= $Router::route('members') ?>" class="block px-3 py-2 hover:bg-gray-700 hover:text-white rounded-md font-medium">
+                Membres
+            </a>
+            <a href="<?= $Router::route('moderators') ?>" class="block px-3 py-2 hover:bg-gray-700 hover:text-white  rounded-md font-medium">
+                Modérateurs
+            </a>
         </div>
+        <?php if ($Auth::check()) : ?>
+            <div class="px-2 pt-2 space-y-1">
+                <span class="px-3 py-2 rounded-md font-medium">
+                    Connecté en tant que 
+                    <span class="text-light-1"><?= $Auth::user()->name ?></span>
+                </span>
+                <form action="/logout" method="POST">
+                    <button type="submit" class="w-full px-3 py-2 my-2 rounded-md font-medium text-left hover:bg-gray-700">
+                        Se déconnecter
+                    </button>
+                </form>
+            </div>
+        <?php endif ?>
     </div>
 </nav>

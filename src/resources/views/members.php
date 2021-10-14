@@ -10,7 +10,7 @@
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="shadow overflow-hidden border-b border-gray-200 dark:border-dark-5 sm:rounded-lg">
                     <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50 dark:bg-dark-3">
+                        <thead class="bg-light-3 dark:bg-dark-3">
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                                     Nom
