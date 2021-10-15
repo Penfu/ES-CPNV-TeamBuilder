@@ -9,7 +9,7 @@
         <div id="modal-background" class="fixed inset-0 bg-light-1 dark:bg-dark-4 bg-opacity-75 dark:bg-opacity-75 transition-opacity" aria-hidden="true"></div>
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
         <div class="inline-block align-bottom rounded-lg bg-light-1 dark:bg-dark-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-            <form id="form" action="equipe" method="POST">
+            <form id="form" action="/membre-%id%/moderateur" method="POST">
                 <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class="sm:flex sm:items-start">
                         <h3 class="text-lg leading-6 font-bold text-center sm:text-left" id="modal-title">
