@@ -1,5 +1,7 @@
 <head>
-    <script type="text/javascript" src="/js/teamOptions.js" defer></script>
+    <?php if ($Auth::user() == $captain) : ?>
+        <script type="text/javascript" src="/js/teamOptions.js" defer></script>
+    <?php endif ?>
 </head>
 
 <div class="container max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">

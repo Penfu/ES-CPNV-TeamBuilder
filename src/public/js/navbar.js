@@ -20,9 +20,19 @@ document
 document
   .getElementById('btn-profile-dropdown')
   .addEventListener('click', function (event) {
-    if (profileDropdown.classList.contains('hidden')) {
+    if (profileDropdown.classList.contains('hidden'))
       profileDropdown.classList.remove('hidden')
-    } else {
-      profileDropdown.classList.add('hidden')
-    }
+    else profileDropdown.classList.add('hidden')
   })
+
+document.addEventListener('click', function (event) {
+  if (
+    event.target.closest('#profile-dropdown') ||
+    event.target.closest('#btn-profile-dropdown')
+  )
+    return
+  else {
+    if (profileDropdown.classList.contains('hidden')) return
+    else profileDropdown.classList.add('hidden')
+  }
+})

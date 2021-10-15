@@ -1,20 +1,16 @@
-let btnOpen = document.getElementById("btn-open-modal");
-let btnClose = document.getElementById("btn-close-modal");
-let modal = document.getElementById("modal-team-creation");
-let modalBackground = document.getElementById("modal-background");
+let modal = document.getElementById('modal-team-creation')
 
-btnOpen.onclick = function () {
-  console.log("Button Open Clicked");
-  modal.style.display = "block";
-};
+document.getElementById('btn-create-team').onclick = function () {
+  modal.classList.remove('hidden')
+  document.getElementById('team-name').focus()
+}
 
-btnClose.onclick = function () {
-  console.log("Button Close Clicked");
-  modal.style.display = "none";
-};
+document.getElementById('btn-cancel').onclick = function () {
+  modal.classList.add('hidden')
+}
 
-window.onclick = function (event) {
-  if (event.target == modalBackground) {
-    modal.style.display = "none";
-  }
-};
+document
+  .getElementById('modal-background')
+  .addEventListener('click', function (event) {
+    modal.classList.add('hidden')
+  })
