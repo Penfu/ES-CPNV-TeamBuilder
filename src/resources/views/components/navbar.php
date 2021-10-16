@@ -20,7 +20,7 @@
             </div>
             <div class="flex-1 flex items-center justify-center md:justify-start">
                 <div class="flex-shrink-0 flex">
-                    <a class="ml-12 md:ml-0 uppercase font-bold text-white text-center justify-center self-center" href="./"><?= SITE_NAME ?></a>
+                    <a class="uppercase font-bold text-white text-center justify-center self-center" href="./"><?= SITE_NAME ?></a>
                 </div>
                 <div class="hidden md:block md:ml-6">
                     <div class="flex space-x-4">
@@ -45,12 +45,12 @@
 
                     <div id="profile-dropdown" class="hidden origin-top-right absolute right-0 mt-1 w-48 rounded-md shadow-lg py-2 bg-white dark:bg-dark-4 text-gray-700 dark:text-light-1 focus:outline-none divide-y divide-gray-100 dark:divide-dark-600 animate-show" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                         <div class="py-1" role="none">
-                            <span class="block px-4 py-2 text-gray-700 dark:text-white" role="menuitem" tabindex="-1" id="user-menu-item-0">
+                            <span class="block px-4 py-2 font-bold" role="menuitem" tabindex="-1" id="user-menu-item-0">
                                 <?= $Auth::user()->name ?>
                             </span>
                             <!-- Darkmode toggle -->
                             <label for="btn-toggle-darkmode" class="flex px-4 pb-1 items-center cursor-pointer">
-                                <div class=" font-medium">
+                                <div>
                                     Thème sombre
                                 </div>
                                 <div class="relative ml-2">
@@ -73,27 +73,28 @@
 
     <!-- Mobile menu, show/hide based on menu state. -->
     <div id="mobile-menu" class="hidden md:hidden text-light-4 animate-fade-in-down">
-        <div class="px-2 pt-2 pb-3 space-y-1">
+        <div class="px-3 pt-2 space-y-1">
             <?php if ($Auth::check()) : ?>
-                <a href="<?= $Router::route('my-teams') ?>" class="block px-3 py-2 hover:bg-gray-700 hover:text-white rounded-md font-medium">
+                <a href="<?= $Router::route('my-teams') ?>" class="block px-2 py-2 hover:bg-gray-700 hover:text-white rounded-md font-medium">
                     Accueil
                 </a>
             <?php endif ?>
-            <a href="<?= $Router::route('members') ?>" class="block px-3 py-2 hover:bg-gray-700 hover:text-white rounded-md font-medium">
+            <a href="<?= $Router::route('members') ?>" class="block px-2 py-2 hover:bg-gray-700 hover:text-white rounded-md font-medium">
                 Membres
             </a>
-            <a href="<?= $Router::route('moderators') ?>" class="block px-3 py-2 hover:bg-gray-700 hover:text-white  rounded-md font-medium">
+            <a href="<?= $Router::route('moderators') ?>" class="block px-2 py-2 hover:bg-gray-700 hover:text-white rounded-md font-medium">
                 Modérateurs
             </a>
         </div>
         <?php if ($Auth::check()) : ?>
-            <div class="px-2 pt-2 space-y-1">
-                <span class="px-3 py-2 rounded-md font-medium">
-                    Connecté en tant que 
+            <div class="px-3 pt-3">
+                <div class="py-3 border-t border-dark-2"></div>
+                <span class="px-2 py-2 rounded-md font-medium">
+                    Connecté en tant que
                     <span class="text-light-1"><?= $Auth::user()->name ?></span>
                 </span>
                 <form action="/logout" method="POST">
-                    <button type="submit" class="w-full px-3 py-2 my-2 rounded-md font-medium text-left hover:bg-gray-700">
+                    <button type="submit" class="w-full px-2 py-3 my-3 rounded-md font-medium text-left hover:bg-gray-700">
                         Se déconnecter
                     </button>
                 </form>
