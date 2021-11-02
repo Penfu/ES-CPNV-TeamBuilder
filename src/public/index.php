@@ -24,6 +24,7 @@ $router->get('/moderateurs', 'App\Controllers\ModeratorsController@index')->name
 
 // Moderator Middleware
 $router->get('/admin', 'App\Controllers\AdminController@index')->name('admin');
+$router->post('/admin/team-member-limit', 'App\Controllers\AdminController@teamMemberLimit');
 
 // Authenticated Middleware
 $router->post('/logout', 'App\Providers\Auth@logout');

@@ -22,8 +22,6 @@ document.getElementById('btn-cancel').onclick = function () {
   modal.classList.add('hidden')
 }
 
-document
-  .getElementById('modal-background')
-  .addEventListener('click', function (event) {
-    modal.classList.add('hidden')
-  })
+document.getElementById('modal-background').onclick = function () {
+  modal.classList.add('hidden')
+}
