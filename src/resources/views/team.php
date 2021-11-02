@@ -14,9 +14,10 @@
             <div class="flex justify-between px-8 py-2 rounded-t-lg bg-light-3 dark:bg-dark-3">
                 <h2 class="my-auto text-xl"><?= $team->name ?></h2>
 
+                <!-- Team Options Dropdown -->
                 <?php if ($Auth::user() == $captain) : ?>
                     <div class="relative order-last inline-block text-left">
-                        <button type="button" id="btn-team-options" class="inline-flex justify-center w-full px-4 py-2 bg-white dark:bg-dark-900 rounded-md border border-gray-300 dark:border-dark-900 shadow-sm  text-sm font-medium text-gray-700 dark:text-dark-100 hover:bg-gray-50 dark:hover:bg-dark-800 focus:outline-none" aria-expanded="true" aria-haspopup="true">
+                        <button type="button" id="btn-team-options" class="inline-flex justify-center w-full px-4 py-2 bg-white dark:bg-dark-5 dark:hover:bg-dark-4 text-gray-700 dark:text-light-1 rounded-md shadow-sm text-sm font-medium focus:outline-none" aria-expanded="true" aria-haspopup="true">
                             Options
                             <svg id="ico-btn-options-open" class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -25,17 +26,16 @@
                                 <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
                             </svg>
                         </button>
-                        <div id="options" class="hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-dark-900 ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 dark:divide-dark-700 focus:outline-none text-gray-700 dark:text-dark-100" role="menu" aria-orientation="vertical" aria-labelledby="btn-team-options" tabindex="-1">
+                        <div id="modal-options" class="hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-dark-5 divide-y divide-gray-100 dark:divide-dark-3 focus:outline-none text-gray-5 dark:text-light-3" role="menu" aria-orientation="vertical" aria-labelledby="btn-team-options" tabindex="-1">
                             <div class="py-1" role="none">
-                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-dark-800 text-sm" role="menuitem" tabindex="1" id="menu-item-0">Edit</a>
-                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-dark-800 text-sm" role="menuitem" tabindex="2" id="menu-item-1">Duplicate</a>
+                                <a href="#" class="block px-4 py-2 rounded-md hover:bg-light-2 dark:hover:bg-dark-5 text-sm" role="menuitem" tabindex="1" id="menu-item-0">Inviter</a>
+                                <a href="#" class="block px-4 py-2 rounded-md hover:bg-light-2 dark:hover:bg-dark-5 text-sm" role="menuitem" tabindex="2" id="menu-item-1">#</a>
                             </div>
                             <div class="py-1" role="none">
-                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-dark-800 text-sm" role="menuitem" tabindex="3" id="menu-item-2">Archive</a>
-                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-dark-800 text-sm" role="menuitem" tabindex="4" id="menu-item-3">Move</a>
+                                <a href="#" class="block px-4 py-2 rounded-md hover:bg-light-2 dark:hover:bg-dark-5 text-sm" role="menuitem" tabindex="3" id="menu-item-2">#</a>
                             </div>
                             <div class="py-1" role="none">
-                                <a href="#" class="block px-4 py-2 rounded-md dark:hover:bg-red-500 text-sm" role="menuitem" tabindex="5" id="menu-item-6">Quitter</a>
+                                <button data-message="Vous êtes sur le point de quitter l'équipe <?= $team->name ?>, cette action est irréverssible. Confirmez-vous ce choix ?" data-id="<?= $team->id ?>" type="button" class="w-full px-4 py-2 rounded-md hover:bg-light-2 dark:hover:bg-dark-5 text-left text-sm">Quitter</button>
                             </div>
                         </div>
                     </div>
@@ -60,3 +60,10 @@
         </div>
     </div>
 </div>
+
+<!-- TODO: Replace by a dynamic JS include at the Onlick 
+    Then remove it on close modal
+-->
+<?php if ($Auth::user() == $captain) : ?>
+    <?php include(VIEW_ROOT . 'modals/confirmation.php') ?>
+<?php endif ?>

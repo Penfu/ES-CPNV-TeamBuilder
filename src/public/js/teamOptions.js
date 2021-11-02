@@ -1,4 +1,4 @@
-let options = document.getElementById('options')
+let options = document.getElementById('modal-options')
 let icoBtnOptionsOpen = document.getElementById('ico-btn-options-open')
 let icoBtnOptionsClose = document.getElementById('ico-btn-options-close')
 

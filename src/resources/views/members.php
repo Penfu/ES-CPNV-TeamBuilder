@@ -12,9 +12,6 @@
                                     Nom
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
-                                    Role
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
                                     Equipes
                                 </th>
                                 <th scope="col" class="relative px-6 py-3">
@@ -27,9 +24,6 @@
                                 <tr>
                                     <td class="px-6 py-2 whitespace-nowrap">
                                         <?= $member->name ?>
-                                    </td>
-                                    <td class="px-6 py-2 whitespace-nowrap">
-                                        <?= $member->role()->name ?>
                                     </td>
                                     <td class="px-6 py-2 whitespace-nowrap">
                                         <?= implode(', ', array_map(

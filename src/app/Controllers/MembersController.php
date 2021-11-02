@@ -11,7 +11,8 @@ class MembersController extends Controller
 {
     public function index()
     {
-        $members = Members::all(true)->orderBy('name')->get();
+        $members = Members::where('role_id', Roles::where('slug', 'MEM')->first()->id)
+            ->orderBy('name')->get();
 
         return $this->render('members', [
             'Auth' => Auth::class,
