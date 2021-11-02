@@ -22,6 +22,10 @@ $router->get('/equipe-:id', 'App\Controllers\TeamController@index')->name('team'
 $router->post('/equipe', 'App\Controllers\TeamController@create');
 $router->get('/moderateurs', 'App\Controllers\ModeratorsController@index')->name('moderators');
 
+// Moderator Middleware
+$router->get('/admin', 'App\Controllers\AdminController@index')->name('admin');
+
+// Authenticated Middleware
 $router->post('/logout', 'App\Providers\Auth@logout');
 
 $router->run();

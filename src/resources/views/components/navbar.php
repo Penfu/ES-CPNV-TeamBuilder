@@ -43,13 +43,19 @@
                         </button>
                     </div>
 
-                    <div id="profile-dropdown" class="hidden origin-top-right absolute right-0 mt-1 w-48 rounded-md shadow-lg py-2 bg-white dark:bg-dark-4 text-gray-700 dark:text-light-1 focus:outline-none divide-y divide-gray-100 dark:divide-dark-600 animate-show" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                        <div class="py-1" role="none">
-                            <span class="block px-4 py-2 font-bold" role="menuitem" tabindex="-1" id="user-menu-item-0">
+                    <div id="profile-dropdown" class="hidden origin-top-right absolute right-0 mt-1 w-48 px-3 py-2 rounded-md shadow-lg bg-white dark:bg-dark-4 text-gray-700 dark:text-light-1 focus:outline-none divide-y divide-gray-100 dark:divide-dark-600 animate-show" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                        <div class="py-1">
+                            <span class="block px-1 py-2 font-bold" role="menuitem" tabindex="-1" id="user-menu-item-0">
                                 <?= $Auth::user()->name ?>
                             </span>
+                        </div>
+                        <div class="py-1">
+                            <?php if ($Auth::user()->isModerator()) : ?>
+                                <a href="<?= $Router::route('admin') ?>" class="block px-1 py-1 my-2 hover:bg-light-3 dark:hover:bg-dark-5 text-dark-4 dark:text-light-1 rounded">Administration</a>
+                            <?php endif ?>
+
                             <!-- Darkmode toggle -->
-                            <label for="btn-toggle-darkmode" class="flex px-4 pb-1 items-center cursor-pointer">
+                            <label for="btn-toggle-darkmode" class="flex pb-1 items-center cursor-pointer">
                                 <div>
                                     Thème sombre
                                 </div>
@@ -60,9 +66,9 @@
                                 </div>
                             </label>
                         </div>
-                        <div class="py-1" role="none">
+                        <div class="py-1">
                             <form action="/logout" method="POST">
-                                <button type="submit" class="block px-4 py-1 text-sm text-gray-700 dark:text-light-1" role="menuitem" tabindex="-1" id="user-menu-item-2">Se déconnecter</button>
+                                <button type="submit" class="px-1 py-1 text-dark-4 dark:text-light-1" role="menuitem" tabindex="-1" id="user-menu-item-2">Se déconnecter</button>
                             </form>
                         </div>
                     </div>
