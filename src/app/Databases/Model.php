@@ -53,12 +53,8 @@ class Model
      */
     public static function create($values): object|false
     {
-        try {
-            $id = (new Create(static::class, $values))->execute();
-            return self::find($id);
-        } catch (\PDOException $e) {
-            return false;
-        }
+        $id = (new Create(static::class, $values))->get();
+        return self::find($id);
     }
 
     /**

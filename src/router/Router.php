@@ -2,6 +2,9 @@
 
 namespace Router;
 
+use App\Controllers\Error,
+    App\Controllers\ErrorController;
+
 class Router
 {
     private $url;
@@ -41,6 +44,6 @@ class Router
             }
         }
 
-        require VIEW_ROOT . 'errors/404.php';
+        (new ErrorController)->index(Error::NOT_FOUND);
     }
 }

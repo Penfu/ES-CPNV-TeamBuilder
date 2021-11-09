@@ -2,6 +2,9 @@
 
 namespace App\Databases;
 
+use PDO;
+use PDOException;
+
 class Query
 {
     use \App\Traits\ClassToTable;
@@ -18,5 +21,10 @@ class Query
         $this->class = $class;
         $this->table = $this->toTable($class);
         $this->params = $params;
+    }
+
+    public function execute($func)
+    {
+        return $func();
     }
 }

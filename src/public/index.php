@@ -3,14 +3,14 @@
 use Router\Router;
 use App\Providers\Auth;
 use App\Models\Members;
+use App\Controllers\Error,
+    App\Controllers\ErrorController;
 
 require dirname(dirname(__FILE__)) . '/vendor/autoload.php';
 require dirname(dirname(__FILE__)) . '/config/config.php';
 require APP_ROOT . '.env.php';
 
-session_start();
 
-Auth::login(Members::find(USER_ID));
 
 $router = new Router($_SERVER['REQUEST_URI']);
 
@@ -22,11 +22,16 @@ $router->get('/equipe-:id', 'App\Controllers\TeamController@index')->name('team'
 $router->post('/equipe', 'App\Controllers\TeamController@create');
 $router->get('/moderateurs', 'App\Controllers\ModeratorsController@index')->name('moderators');
 
-// Moderator Middleware
 $router->get('/admin', 'App\Controllers\AdminController@index')->name('admin');
 $router->post('/admin/team-member-limit', 'App\Controllers\AdminController@teamMemberLimit');
 
-// Authenticated Middleware
 $router->post('/logout', 'App\Providers\Auth@logout');
 
-$router->run();
+session_start();
+
+try {
+    Auth::login(Members::find(USER_ID));
+    $router->run();
+} catch (PDOException $e) {
+    (new ErrorController)->index(Error::DATABASE_ERROR);
+}

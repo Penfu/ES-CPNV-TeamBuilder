@@ -36,7 +36,7 @@ class Connector
     /**
      * @return PDO
      */
-    public function pdo(): PDO
+    public function pdo(): PDO | null
     {
         return $this->pdo;
     }

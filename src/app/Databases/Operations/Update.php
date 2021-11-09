@@ -14,24 +14,12 @@ class Update extends Query
     public function __construct(string $class, array $params)
     {
         parent::__construct($class, $params);
-        $this->build();
-        $this->execute();
-    }
 
-    /**
-     * Build the query
-     */
-    private function build()
-    {
+        // Build the query
         foreach (array_diff(array_keys($this->params), ['id']) as $key) $paramsKeys[] = $key . ' = :' . $key;
         $this->query = 'UPDATE ' . $this->table . ' SET ' . implode(',', $paramsKeys) . ' WHERE id = :id';
-    }
 
-    /**
-     * Execute the query
-     */
-    private function execute()
-    {
+        // Perform the query to the databases
         Connector::getInstance()->pdo()->prepare($this->query)->execute($this->params);
     }
 }
