@@ -70,7 +70,12 @@ module.exports = {
     }
   },
   variants: {
-    extend: {}
+    extend: {
+      cursor: ['disabled'],
+      pointerEvents: ['disabled'],
+      backgroundColor: ['disabled'],
+      opacity: ['disabled'],
+    }
   },
   plugins: []
 }

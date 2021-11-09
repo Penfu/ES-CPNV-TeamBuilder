@@ -1,5 +1,5 @@
-<script type="text/javascript" src="/js/admin/team.js" defer></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+<script type="text/javascript" src="/js/admin/team.js" defer></script>
 
 <div class="container max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <h2 class="pt-12 pb-6 text-xl text-center md:text-left">Administration</h2>
@@ -12,9 +12,9 @@
             Nombre de membres par équipe
         </h3>
         <div class="inline-block w-auto mx-8 my-4">
-            <button id="btn-decrease-team-member-limit" class="px-4 py-1 rounded text-2xl bg-light-3 dark:bg-dark-3 dark:hover:bg-dark-2">-</button>
+            <button id="btn-decrease-team-member-limit" class="px-5 py-1 rounded text-2xl bg-light-3 dark:bg-dark-3 hover:bg-light-4 dark:hover:bg-dark-2 disabled:opacity-50 disabled:bg-light-3 dark:disabled:bg-dark-3">-</button>
             <span id="team-member-limit" class="px-3"><?= $teamMemberLimit ?></span>
-            <button id="btn-increase-team-member-limit" class="px-4 py-1 rounded text-2xl bg-light-3 dark:bg-dark-3 dark:hover:bg-dark-2">+</button>
+            <button id="btn-increase-team-member-limit" class="px-4 py-1 rounded text-2xl bg-light-3 dark:bg-dark-3 hover:bg-light-4 dark:hover:bg-dark-2 disabled:opacity-50 disabled:bg-light-3 dark:disabled:bg-dark-3">+</button>
         </div>
     </div>
 

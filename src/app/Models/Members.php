@@ -28,7 +28,6 @@ class Members extends Model
         return $teams;
     }
 
-
     /**
      * @return bool
      */
