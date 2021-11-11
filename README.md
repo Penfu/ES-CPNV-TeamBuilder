@@ -2,7 +2,7 @@
 
 ## Autologin
 
-The id of the autologed member is define in the root .env file.
+The autologed member id is define in the .env config file.
 
 ```php
 const USER_ID = 1;
