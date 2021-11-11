@@ -49,9 +49,9 @@ class Model
 
     /**
      * @param array $values is an array of value correspond to columns of the row you want to create
-     * @return object|false
+     * @return object
      */
-    public static function create($values): object|false
+    public static function create($values): object
     {
         $id = (new Create(static::class, $values))->get();
         return self::find($id);
