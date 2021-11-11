@@ -22,9 +22,6 @@ $router->get('/equipe-:id', 'App\Controllers\TeamController@index')->name('team'
 $router->post('/equipe', 'App\Controllers\TeamController@create');
 $router->get('/moderateurs', 'App\Controllers\ModeratorsController@index')->name('moderators');
 
-$router->get('/admin', 'App\Controllers\AdminController@index')->name('admin');
-$router->post('/admin/team-member-limit', 'App\Controllers\AdminController@teamMemberLimit');
-
 $router->post('/logout', 'App\Providers\Auth@logout');
 
 session_start();

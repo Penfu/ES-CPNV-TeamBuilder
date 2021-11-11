@@ -50,10 +50,6 @@
                             </span>
                         </div>
                         <div class="py-1">
-                            <?php if ($Auth::user()->isModerator()) : ?>
-                                <a href="<?= $Router::route('admin') ?>" class="block px-1 py-1 my-2 hover:bg-light-3 dark:hover:bg-dark-5 text-dark-4 dark:text-light-1 rounded">Administration</a>
-                            <?php endif ?>
-
                             <!-- Darkmode toggle -->
                             <label for="btn-toggle-darkmode" class="flex pb-1 items-center cursor-pointer">
                                 <div>
