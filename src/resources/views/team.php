@@ -60,10 +60,3 @@
         </div>
     </div>
 </div>
-
-<!-- TODO: Replace by a dynamic JS include at the Onlick 
-    Then remove it on close modal
--->
-<?php if ($Auth::user() == $captain) : ?>
-    <?php include(VIEW_ROOT . 'modals/confirmation.php') ?>
-<?php endif ?>

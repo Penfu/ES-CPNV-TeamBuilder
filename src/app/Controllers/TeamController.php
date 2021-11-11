@@ -34,12 +34,13 @@ class TeamController extends Controller
             Router::redirect('home');
         }
 
-        $team = Teams::create(['name' => $name, 'state_id' => States::where('slug', 'RECRUTING')->first()->id]);
-
-        if ($team) {
+        try {
+            $team = Teams::create(['name' => $name, 'state_id' => States::where('slug', 'RECRUTING')->first()->id]);
             $team->addMember(Auth::user(), true);
-        } else {
-            $_SESSION['alert'] = "Le nom de l'équipe doit être unique";
+        } catch (\PDOException $e) {
+            if ($e->errorInfo[0] == 23000 && $e->errorInfo[1] == 1062) {
+                $_SESSION['alert'] = "Le nom de l'équipe doit être unique";
+            }
         }
 
         Router::redirect('my-teams');
