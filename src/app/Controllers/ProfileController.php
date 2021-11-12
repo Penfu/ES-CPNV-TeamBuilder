@@ -17,11 +17,13 @@ class ProfileController extends Controller
 
     public function profile($memberId)
     {
-        if (!Auth::user()->isModerator()) {
+        $member = Members::find($memberId);
+
+        if (!isset($member) || !Auth::user()->isModerator()) {
             Router::redirect('home');
         }
 
-        $this->renderProfile(Members::find($memberId));
+        $this->renderProfile($member);
     }
 
     private function renderProfile($member)
