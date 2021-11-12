@@ -23,7 +23,11 @@
                             <?php foreach ($members as $member) : ?>
                                 <tr>
                                     <td class="px-6 py-2 whitespace-nowrap">
-                                        <?= $member->name ?>
+                                        <?php if ($Auth::user()->isModerator()) : ?>
+                                            <a href="profile-<?= $member->id ?>"><?= $member->name ?></a>
+                                        <?php else : ?>
+                                            <?= $member->name ?>
+                                        <?php endif ?>
                                     </td>
                                     <td class="px-6 py-2 whitespace-nowrap">
                                         <?= implode(', ', array_map(
