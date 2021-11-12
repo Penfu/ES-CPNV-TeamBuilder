@@ -58,7 +58,10 @@ class ProfileController extends Controller
         }
 
         return $this->render('profile-edition', [
-            'member' => $member
+            'member' => $member,
+            'auth' => Auth::class,
+            'roles' => Roles::all(),
+            'status' => Status::all(),
         ]);
     }
 
@@ -69,5 +72,23 @@ class ProfileController extends Controller
         if (!isset($member)) {
             Router::redirect('home');
         }
+
+        if (isset($_POST['member-name'])) {
+            $member->name = $_POST['member-name'];
+
+            try {
+                $member->save();
+            } catch (\PDOException $e) {
+                if ($e->errorInfo[0] == 23000 && $e->errorInfo[1] == 1062) {
+                    $_SESSION['alert'] = "Ce nom est déjà utilisé par un autre membre.";
+                }
+            }
+        }
+
+        $member->role_id = $_POST['member-role'] ?? $member->role_id;
+        $member->status_id = $_POST['member-status'] ?? $member->status_id;
+        $member->save();
+
+        Router::redirect('my-profile');
     }
 }
