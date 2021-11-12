@@ -15,7 +15,7 @@ npm run build
 
 ## Autologin
 
-The autologed member id is define in the .env config file.
+The autologed member id is defined in the .env config file.
 
 ```php
 const USER_ID = 1;
