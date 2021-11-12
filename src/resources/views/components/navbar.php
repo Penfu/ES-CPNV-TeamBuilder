@@ -45,7 +45,7 @@
 
                     <div id="profile-dropdown" class="hidden origin-top-right absolute right-0 mt-1 w-48 px-3 py-2 rounded-md shadow-lg bg-white dark:bg-dark-4 text-gray-700 dark:text-light-1 focus:outline-none divide-y divide-gray-100 dark:divide-dark-600 animate-show" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                         <div class="py-1">
-                            <a href="<?= $Router::route('profile') ?>" class="block px-1 py-2 font-bold" role="menuitem" tabindex="-1" id="user-menu-item-0">
+                            <a href="<?= $Router::route('my-profile') ?>" class="block px-1 py-2 font-bold" role="menuitem" tabindex="-1" id="user-menu-item-0">
                                 <?= $Auth::user()->name ?>
                             </a>
                         </div>

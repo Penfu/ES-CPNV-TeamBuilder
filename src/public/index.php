@@ -23,7 +23,9 @@ $router->post('/equipe', 'App\Controllers\TeamController@create');
 $router->get('/moderateurs', 'App\Controllers\ModeratorsController@index')->name('moderators');
 
 $router->get('/profile', 'App\Controllers\ProfileController@index')->name('my-profile');
-$router->get('/profile-:id', 'App\Controllers\ProfileController@profile');
+$router->get('/profile-:id', 'App\Controllers\ProfileController@profile')->name('profile');
+$router->post('/profile-:id/mode/edition', 'App\Controllers\ProfileController@editionMode');
+$router->post('/profile-:id/edit', 'App\Controllers\ProfileController@edit');
 
 $router->post('/logout', 'App\Providers\Auth@logout');
 

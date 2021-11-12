@@ -12,7 +12,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $this->renderProfile(Auth::user());
+        $this->renderProfile('My profile', Auth::user());
     }
 
     public function profile($memberId)
@@ -21,12 +21,14 @@ class ProfileController extends Controller
 
         if (!isset($member) || !Auth::user()->isModerator()) {
             Router::redirect('home');
+        } else if ($member == Auth::user()) {
+            Router::redirect('my-profile');
         }
 
-        $this->renderProfile($member);
+        $this->renderProfile('Profile', $member);
     }
 
-    private function renderProfile($member)
+    private function renderProfile($title, $member)
     {
         $teams = $member->teams();
 
@@ -39,9 +41,33 @@ class ProfileController extends Controller
         }
 
         return $this->render('profile', [
+            'title' => $title,
             'member' => $member,
+            'auth' => Auth::class,
             'captainOfTeams' => $captainOfTeams ?? null,
             'memberOfTeams' => $memberOfTeams ?? null,
         ]);
+    }
+
+    public function editionMode($memberId)
+    {
+        $member = Members::find($memberId);
+
+        if (!isset($member)) {
+            Router::redirect('home');
+        }
+
+        return $this->render('profile-edition', [
+            'member' => $member
+        ]);
+    }
+
+    public function edit($memberId)
+    {
+        $member = Members::find($memberId);
+
+        if (!isset($member)) {
+            Router::redirect('home');
+        }
     }
 }
