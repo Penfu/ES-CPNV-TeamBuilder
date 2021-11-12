@@ -19,10 +19,11 @@ class ProfileController extends Controller
     {
         $member = Members::find($memberId);
 
-        if (!isset($member) || !Auth::user()->isModerator()) {
-            Router::redirect('home');
-        } else if ($member == Auth::user()) {
+        if ($member == Auth::user()) {
             Router::redirect('my-profile');
+        }
+        else if (!isset($member) || !Auth::user()->isModerator()) {
+            Router::redirect('home');
         }
 
         $this->renderProfile('Profile', $member);
@@ -81,6 +82,7 @@ class ProfileController extends Controller
             } catch (\PDOException $e) {
                 if ($e->errorInfo[0] == 23000 && $e->errorInfo[1] == 1062) {
                     $_SESSION['alert'] = "Ce nom est déjà utilisé par un autre membre.";
+                    Router::redirect('my-profile');
                 }
             }
         }

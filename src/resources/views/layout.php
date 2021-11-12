@@ -25,7 +25,6 @@ use App\Controllers\Components\NavbarController,
             <?php if (isset($_SESSION['alert'])) : ?>
                 <?= (new BannerController)->index() ?>
             <?php endif ?>
-            <h3 class="container max-w-7xl mx-auto my-4 px-2 sm:px-6 lg:px-8">Version: Fin Examen - Armand</h3>
             <?= $content ?>
         </div>
     </div>
