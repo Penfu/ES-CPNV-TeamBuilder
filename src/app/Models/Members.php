@@ -14,10 +14,16 @@ class Members extends Model
     protected string $name;
     protected string $password;
     protected int $role_id;
+    protected int $status_id;
 
     public function role(): Roles|null
     {
         return Roles::find($this->role_id);
+    }
+
+    public function status(): Status|null
+    {
+        return Status::find($this->status_id);
     }
 
     public function teams() : array|null
