@@ -36,6 +36,22 @@ CREATE TABLE IF NOT EXISTS `teambuilder`.`roles`
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8mb3;
 
+-- -----------------------------------------------------
+-- Table `teambuilder`.`status`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `teambuilder`.`status`;
+
+CREATE TABLE IF NOT EXISTS `teambuilder`.`status`
+(
+    `id`   INT         NOT NULL AUTO_INCREMENT,
+    `slug` VARCHAR(10) NOT NULL,
+    `name` VARCHAR(45) NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE,
+    UNIQUE INDEX `slug_UNIQUE` (`slug` ASC) VISIBLE
+)
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb3;
 
 -- -----------------------------------------------------
 -- Table `teambuilder`.`members`
@@ -48,12 +64,18 @@ CREATE TABLE IF NOT EXISTS `teambuilder`.`members`
     `name`     VARCHAR(45)  NOT NULL,
     `password` VARCHAR(500) NOT NULL,
     `role_id`  INT          NOT NULL,
+    `status_id` INT          NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE,
     INDEX `fk_members_roles_idx` (`role_id` ASC) VISIBLE,
     CONSTRAINT `fk_members_roles`
         FOREIGN KEY (`role_id`)
             REFERENCES `teambuilder`.`roles` (`id`)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION,
+    CONSTRAINT `fk_members_status`
+        FOREIGN KEY (`status_id`)
+            REFERENCES `teambuilder`.`status` (`id`)
             ON DELETE NO ACTION
             ON UPDATE NO ACTION
 )
@@ -144,6 +166,14 @@ VALUES ("MEM", "Member"),
        ("MOD", "Moderator");
 
 -- -----------------------------------------------------
+-- Table `status` - Data
+-- -----------------------------------------------------
+INSERT INTO status(status.slug, status.name)
+VALUES ("ACT", "Actif"),
+       ("AFK", "inactif"),
+       ("BAN", "Banni");
+
+-- -----------------------------------------------------
 -- Table `states` - Data
 -- -----------------------------------------------------
 INSERT INTO `states` (`id`, `slug`, `name`)
@@ -178,58 +208,58 @@ VALUES ("Suicide Squad", 1),
 -- Table `members` - Data
 -- -----------------------------------------------------
 
-insert into teambuilder.members (name, password, role_id)
-values ('Anthony', 'Anthony''s_Pa$$w0rd', 1),
-       ('Armand', 'Armand''s_Pa$$w0rd', 1),
-       ('Cyril', 'Cyril''s_Pa$$w0rd', 1),
-       ('Filipe', 'Filipe''s_Pa$$w0rd', 1),
-       ('Helene', 'Helene''s_Pa$$w0rd', 1),
-       ('Mario', 'Mario''s_Pa$$w0rd', 1),
-       ('Mathieu', 'Mathieu''s_Pa$$w0rd', 1),
-       ('Mauro', 'Mauro''s_Pa$$w0rd', 1),
-       ('Melodie', 'Melodie''s_Pa$$w0rd', 1),
-       ('Noah', 'Noah''s_Pa$$w0rd', 1),
-       ('Robiel', 'Robiel''s_Pa$$w0rd', 1),
-       ('Sou', 'Sou''s_Pa$$w0rd', 1),
-       ('Theo', 'Theo''s_Pa$$w0rd', 1),
-       ('Yannick', 'Yannick''s_Pa$$w0rd', 1),
-       ('Xavier', 'Xavier''s_Pa$$w0rd', 2),
-       ('Pascal', 'Pascal''s_Pa$$w0rd', 2),
-       ('Nicolas', 'Nicolas''s_Pa$$w0rd', 2),
-       ('Lèi', 'Lèi''s_Pa$$w0rd', 1),
-       ('Marie-josée', 'Marie-josée''s_Pa$$w0rd', 1),
-       ('Håkan', 'Håkan''s_Pa$$w0rd', 1),
-       ('Cécile', 'Cécile''s_Pa$$w0rd', 1),
-       ('Dà', 'Dà''s_Pa$$w0rd', 1),
-       ('Néhémie', 'Néhémie''s_Pa$$w0rd', 1),
-       ('Sòng', 'Sòng''s_Pa$$w0rd', 1),
-       ('Audréanne', 'Audréanne''s_Pa$$w0rd', 1),
-       ('Lucrèce', 'Lucrèce''s_Pa$$w0rd', 2),
-       ('Göran', 'Göran''s_Pa$$w0rd', 1),
-       ('Hélèna', 'Hélèna''s_Pa$$w0rd', 1),
-       ('Åslög', 'Åslög''s_Pa$$w0rd', 1),
-       ('Inès', 'Inès''s_Pa$$w0rd', 1),
-       ('Agnès', 'Agnès''s_Pa$$w0rd', 1),
-       ('Táng', 'Táng''s_Pa$$w0rd', 1),
-       ('Yáo', 'Yáo''s_Pa$$w0rd', 1),
-       ('Marlène', 'Marlène''s_Pa$$w0rd', 1),
-       ('Eléa', 'Eléa''s_Pa$$w0rd', 1),
-       ('Thérèse', 'Thérèse''s_Pa$$w0rd', 1),
-       ('Pélagie', 'Pélagie''s_Pa$$w0rd', 1),
-       ('Clélia', 'Clélia''s_Pa$$w0rd', 2),
-       ('Anaé', 'Anaé''s_Pa$$w0rd', 1),
-       ('Marie-noël', 'Marie-noël''s_Pa$$w0rd', 1),
-       ('Andréanne', 'Andréanne''s_Pa$$w0rd', 1),
-       ('Gérald', 'Gérald''s_Pa$$w0rd', 1),
-       ('Bérénice', 'Bérénice''s_Pa$$w0rd', 1),
-       ('Anaël', 'Anaël''s_Pa$$w0rd', 1),
-       ('Mélissandre', 'Mélissandre''s_Pa$$w0rd', 1),
-       ('Marie-hélène', 'Marie-hélène''s_Pa$$w0rd', 1),
-       ('Desirée', 'Desirée''s_Pa$$w0rd', 1),
-       ('Zhì', 'Zhì''s_Pa$$w0rd', 1),
-       ('Lén', 'Lén''s_Pa$$w0rd', 1),
-       ('Cinéma', 'Cinéma''s_Pa$$w0rd', 1),
-       ('Marylène', 'Marylène''s_Pa$$w0rd', 1);
+insert into teambuilder.members (name, password, role_id, status_id)
+values ('Anthony', 'Anthony''s_Pa$$w0rd', 1, 1),
+       ('Armand', 'Armand''s_Pa$$w0rd', 1, 1),
+       ('Cyril', 'Cyril''s_Pa$$w0rd', 1, 1),
+       ('Filipe', 'Filipe''s_Pa$$w0rd', 1, 1),
+       ('Helene', 'Helene''s_Pa$$w0rd', 1, 1),
+       ('Mario', 'Mario''s_Pa$$w0rd', 1, 1),
+       ('Mathieu', 'Mathieu''s_Pa$$w0rd', 1, 1),
+       ('Mauro', 'Mauro''s_Pa$$w0rd', 1, 1),
+       ('Melodie', 'Melodie''s_Pa$$w0rd', 1, 1),
+       ('Noah', 'Noah''s_Pa$$w0rd', 1, 1),
+       ('Robiel', 'Robiel''s_Pa$$w0rd', 1, 1),
+       ('Sou', 'Sou''s_Pa$$w0rd', 1, 1),
+       ('Theo', 'Theo''s_Pa$$w0rd', 1, 1),
+       ('Yannick', 'Yannick''s_Pa$$w0rd', 1, 1),
+       ('Xavier', 'Xavier''s_Pa$$w0rd', 2, 1),
+       ('Pascal', 'Pascal''s_Pa$$w0rd', 2, 1),
+       ('Nicolas', 'Nicolas''s_Pa$$w0rd', 2, 1),
+       ('Lèi', 'Lèi''s_Pa$$w0rd', 1, 1),
+       ('Marie-josée', 'Marie-josée''s_Pa$$w0rd', 1, 1),
+       ('Håkan', 'Håkan''s_Pa$$w0rd', 1, 1),
+       ('Cécile', 'Cécile''s_Pa$$w0rd', 1, 1),
+       ('Dà', 'Dà''s_Pa$$w0rd', 1, 1),
+       ('Néhémie', 'Néhémie''s_Pa$$w0rd', 1, 1),
+       ('Sòng', 'Sòng''s_Pa$$w0rd', 1, 1),
+       ('Audréanne', 'Audréanne''s_Pa$$w0rd', 1, 1),
+       ('Lucrèce', 'Lucrèce''s_Pa$$w0rd', 2, 1),
+       ('Göran', 'Göran''s_Pa$$w0rd', 1, 1),
+       ('Hélèna', 'Hélèna''s_Pa$$w0rd', 1, 1),
+       ('Åslög', 'Åslög''s_Pa$$w0rd', 1, 1),
+       ('Inès', 'Inès''s_Pa$$w0rd', 1, 1),
+       ('Agnès', 'Agnès''s_Pa$$w0rd', 1, 1),
+       ('Táng', 'Táng''s_Pa$$w0rd', 1, 1),
+       ('Yáo', 'Yáo''s_Pa$$w0rd', 1, 1),
+       ('Marlène', 'Marlène''s_Pa$$w0rd', 1, 1),
+       ('Eléa', 'Eléa''s_Pa$$w0rd', 1, 1),
+       ('Thérèse', 'Thérèse''s_Pa$$w0rd', 1, 1),
+       ('Pélagie', 'Pélagie''s_Pa$$w0rd', 1, 1),
+       ('Clélia', 'Clélia''s_Pa$$w0rd', 2, 1),
+       ('Anaé', 'Anaé''s_Pa$$w0rd', 1, 1),
+       ('Marie-noël', 'Marie-noël''s_Pa$$w0rd', 1, 1),
+       ('Andréanne', 'Andréanne''s_Pa$$w0rd', 1, 1),
+       ('Gérald', 'Gérald''s_Pa$$w0rd', 1, 1),
+       ('Bérénice', 'Bérénice''s_Pa$$w0rd', 1, 1),
+       ('Anaël', 'Anaël''s_Pa$$w0rd', 1, 1),
+       ('Mélissandre', 'Mélissandre''s_Pa$$w0rd', 1, 1),
+       ('Marie-hélène', 'Marie-hélène''s_Pa$$w0rd',1, 1),
+       ('Desirée', 'Desirée''s_Pa$$w0rd', 1, 1),
+       ('Zhì', 'Zhì''s_Pa$$w0rd', 1, 1),
+       ('Lén', 'Lén''s_Pa$$w0rd', 1, 1),
+       ('Cinéma', 'Cinéma''s_Pa$$w0rd', 1, 1),
+       ('Marylène', 'Marylène''s_Pa$$w0rd', 1, 1);
 
 -- -----------------------------------------------------
 -- Table `teambuilder` - Data
